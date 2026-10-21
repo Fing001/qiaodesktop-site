@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjE0MCAxNDAgNzQ0IDc0NCIgd2lkdGg9IjEwMjQiIGhlaWdodD0iMTAyNCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9InQiPgogIDx0aXRsZSBpZD0idCI+UWlhb0Rlc2t0b3Ag5ben5qGM6Z2iPC90aXRsZT4KICA8ZGVzYz7kuInnm5LkuIrkuIvloIblj6DjgIHliY3lkI7nrYnot53plJnkvY3igJTigJTmnIDov5znm5LmnIDkuq7jgIHkuK3nm5Log4zooazjgIHliY3nm5LkuLvok53vvJvliY3nm5LlhoUgMsOXMiDlm5vmoLzvvJrlt6bkuIrnmb3lnZflhoXlrZfmr40gUe+8iOWHoOS9leWchueOryArIDQ1wrAg6IO25ZuK5bC+77yJ44CB5Y+z5LiK5pqW55Cl54+A44CB5bem5LiL6Z2S57u/44CB5Y+z5LiL55m95Z2X5YaF5a2X5q+NIETvvIjlt6bnq5bmnaHvvIjlt6bop5LlnIbvvIkrIOWPs+WNiueOr++8ieOAguWtl+avjeS4uue6r+WHoOS9leaehOmAoO+8jOS4jeS+nei1luS7u+S9leWtl+S9k+OAgumAj+aYjuW6le+8jOaXoOW6leadvzwvZGVzYz4KCiAgPCEtLSDmnIDov5znm5LvvIjlhYjnlLvvvIzooqvnm5bkvY/lpKfljYrvvIkgLS0+CiAgPHJlY3QgeD0iMTQwIiB5PSIxNDAiIHdpZHRoPSI1NDAiIGhlaWdodD0iNTQwIiByeD0iMTAyIiByeT0iMTAyIiBmaWxsPSIjQTlDREY3Ii8+CgogIDwhLS0g5Lit55uS77ya6IOM6KGs77yM5YGP5bem5LiK6Zyy5Ye65LiKL+W3pui+ueadoSAtLT4KICA8cmVjdCB4PSIyNDIiIHk9IjI0MiIgd2lkdGg9IjU0MCIgaGVpZ2h0PSI1NDAiIHJ4PSIxMDIiIHJ5PSIxMDIiIGZpbGw9IiM5MEMxRkYiLz4KCiAgPCEtLSDliY3nm5LvvJrkuLvok50gLS0+CiAgPHJlY3QgeD0iMzQ0IiB5PSIzNDQiIHdpZHRoPSI1NDAiIGhlaWdodD0iNTQwIiByeD0iMTAyIiByeT0iMTAyIiBmaWxsPSIjNThBNkZGIi8+CgogIDwhLS0g5YmN55uSIDLDlzIg5Zub5qC877ya5bem5LiK55m95Z2X77yIUe+8iS8g5Y+z5LiK55Cl54+AIC8g5bem5LiL6Z2S57u/IC8g5Y+z5LiL55m95Z2X77yIRO+8iSAtLT4KICA8cmVjdCB4PSI0MzQiIHk9IjQzNCIgd2lkdGg9IjEzOCIgaGVpZ2h0PSIxMzgiIHJ4PSIzMyIgcnk9IjMzIiBmaWxsPSIjRUVGNEZDIi8+CiAgPHJlY3QgeD0iNjU2IiB5PSI0MzQiIHdpZHRoPSIxMzgiIGhlaWdodD0iMTM4IiByeD0iMzMiIHJ5PSIzMyIgZmlsbD0iI0ZGQjQ1NCIvPgogIDxyZWN0IHg9IjQzNCIgeT0iNjU2IiB3aWR0aD0iMTM4IiBoZWlnaHQ9IjEzOCIgcng9IjMzIiByeT0iMzMiIGZpbGw9IiMzRUNGQjIiLz4KICA8cmVjdCB4PSI2NTYiIHk9IjY1NiIgd2lkdGg9IjEzOCIgaGVpZ2h0PSIxMzgiIHJ4PSIzMyIgcnk9IjMzIiBmaWxsPSIjRUVGNEZDIi8+CgogIDwhLS0g5a2X5q+NIFHvvJrlnIbnjq/vvIjkuK3lv4Pnur8gcj00MC4zNO+8jOeslOeUuyAyMS40NO+8jOS4juWkluWchi/lhoXlnIblkIzlv4PvvIkrIDQ1wrAg6IO25ZuK5bC+IC0tPgogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzU4QTZGRiIgc3Ryb2tlLXdpZHRoPSIyMS40NCI+CiAgICA8Y2lyY2xlIGN4PSI1MDMiIGN5PSI1MDMiIHI9IjQwLjM0Ii8+CiAgICA8bGluZSB4MT0iNTI5LjAiIHkxPSI1MjkuMCIgeDI9IjU0NS45MyIgeTI9IjU0NS45MyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPC9nPgoKICA8IS0tIOWtl+avjSBE77ya5bem56uW5p2h77yI5bem6KeS5ZyGIDIw77yJKyDkuIov5LiL5qiq5p2hICsg5Y+z5Y2K546v77ybCiAgICAgICDlhoXlrZTvvIhjb3VudGVy77yJ5Z6C55u06IyD5Zu06Lef6ZqP56yU55S75pS257yp77yM5aSWL+WGheS4pOadoeWtkOi3r+W+hOS7pSBldmVub2RkIOaMluepuiAtLT4KICA8cGF0aCBkPSJNNzAxLjA5IDY3My45NCBINzE3Ljg1IEE1MS4wNiA1MS4wNiAwIDAgMSA3MTcuODUgNzc2LjA2IEg3MDEuMDkgQTIwIDIwIDAgMCAxIDY4MS4wOSA3NTYuMDYgVjY5My45NCBBMjAgMjAgMCAwIDEgNzAxLjA5IDY3My45NCBaIE03MTYuNTMgNjk1LjM5IEg3MTcuODUgQTI5LjYxIDI5LjYxIDAgMCAxIDcxNy44NSA3NTQuNjEgSDcxNi41MyBBMTQgMTQgMCAwIDEgNzAyLjUzIDc0MC42MSBWNzA5LjM5IEExNCAxNCAwIDAgMSA3MTYuNTMgNjk1LjM5IFoiCiAgICAgICAgZmlsbD0iIzU4QTZGRiIgZmlsbC1ydWxlPSJldmVub2RkIi8+Cjwvc3ZnPgo=" />
+<title>巧桌面 QiaoDesktop — 让 Windows 桌面干净、整洁、赏心悦目</title>
+<meta name="description" content="巧桌面（QiaoDesktop）是一款 Windows 桌面整理与美化工具：盒子收纳、文件夹映射、浮沉方式、壁纸切换、边缘热条一键唤出。本地运行，文件不上传。" />
+<!-- 分享卡（og / twitter）：og:url、canonical 与 og:image 的域名需与最终部署域名一致 -->
+<link rel="canonical" href="https://qiaodesktop.com/zh/" />
+<link rel="alternate" hreflang="en" href="https://qiaodesktop.com/" />
+<link rel="alternate" hreflang="zh-Hans" href="https://qiaodesktop.com/zh/" />
+<link rel="alternate" hreflang="x-default" href="https://qiaodesktop.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="巧桌面 QiaoDesktop" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:url" content="https://qiaodesktop.com/zh/" />
+<meta property="og:title" content="巧桌面 QiaoDesktop — 让 Windows 桌面干净、整洁、赏心悦目" />
+<meta property="og:description" content="Windows 桌面整理工具：把文件收进盒子，桌面只留你要的。盒子收纳、文件夹映射、浮沉方式、壁纸切换，大小仅 4M，绿色免安装。" />
+<meta property="og:image" content="https://qiaodesktop.com/demo-assets/og.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="巧桌面：把文件收进盒子，桌面只留你要的" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="巧桌面 QiaoDesktop — 让 Windows 桌面干净、整洁、赏心悦目" />
+<meta name="twitter:description" content="Windows 桌面整理工具：把文件收进盒子，桌面只留你要的。大小仅 4M，绿色免安装。" />
+<meta name="twitter:image" content="https://qiaodesktop.com/demo-assets/og.jpg" />
+<link rel="stylesheet" href="../demo.css" />
+<style>
+  :root{
+    --navy:#304156;        /* 侧栏深蓝（取自 qd 设置中心） */
+    --navy-2:#263345;
+    --gold:#FFC000;        /* 强调金 */
+    --green:#2E7D5B;       /* 选中绿 */
+    --ink:#1f2733;
+    --slate:#5b6573;
+    --line:#e6e9ef;
+    --bg:#ffffff;
+    --bg-soft:#f6f8fb;
+    --bg-deep:#0f1622;
+    --radius:16px;
+    --shadow:0 10px 30px rgba(16,22,34,.08);
+    --shadow-lg:0 24px 60px rgba(16,22,34,.16);
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--gold);color:#1a1300}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:#c9d2de;border:3px solid transparent;border-radius:999px;background-clip:content-box}
+  ::-webkit-scrollbar-thumb:hover{background:#aeb9ca;border:3px solid transparent;background-clip:content-box}
+  ::-webkit-scrollbar-track{background:transparent}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;
+    padding:12px 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  }
+  .btn-primary{background:var(--gold);color:#1a1300}
+  .btn-primary:hover{background:#E8AE00}
+  .btn-ghost{background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+  /* ===== Nav ===== */
+  header.nav{
+    position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.5px}
+  .brand .mark{width:30px;height:30px;display:block;flex:none}
+  .nav-links{display:flex;gap:28px;font-size:15px;color:var(--slate);font-weight:500}
+  .nav-links a:hover{color:var(--navy)}
+  .nav-cta{display:flex;align-items:center;gap:12px}
+  .menu-btn{display:none;background:none;border:0;font-size:26px;cursor:pointer;color:var(--navy)}
+
+  /* 语言切换：EN / 中文 分段胶囊 */
+  .lang-sw{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:2px;font-size:13px;font-weight:700;color:var(--slate);background:#fff}
+  .lang-sw a,.lang-sw .on{padding:4px 10px;border-radius:999px;line-height:1.5}
+  .lang-sw .on{background:var(--navy);color:#fff}
+  .lang-sw a:hover{color:var(--navy)}
+
+  /* 按钮排（下载区 CTA 使用） */
+  .act-row{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+
+
+  /* ===== Sections ===== */
+  section{padding:84px 0}
+  .sec-head{text-align:center;max-width:720px;margin:0 auto 48px}
+  .sec-head .kicker{color:var(--gold);font-weight:800;letter-spacing:2px;font-size:13px;text-transform:uppercase}
+  .sec-head h2{font-size:34px;font-weight:820;margin:10px 0 12px;letter-spacing:-.4px}
+  .sec-head p{color:var(--slate);font-size:16px}
+  /* 浮沉区描述与功能区标题要单行显示：默认 720px 容器会折行，这两处放宽到 900px */
+  #float .sec-head,
+  #features .sec-head{max-width:900px}
+
+  /* ===== 交互演示模块（模块内样式见 demo.css，作用域 #qdDemo） ===== */
+  /* 全站唯一 h1：页面第一屏主标题（视觉与原有 h2 一致） */
+  #demo{background:linear-gradient(180deg,#f8fafc,#eef2f7);scroll-margin-top:74px;padding:20px 0 32px}
+  #demo .sec-head{margin-bottom:14px;max-width:860px}
+  #demo .sec-head h1{font-size:34px;font-weight:820;letter-spacing:-.4px;margin:2px 0 6px;line-height:1.28}
+  /* 标题第二行：下载邀约，比标题小两档、灰色，规格词加粗提深色 */
+  #demo .sec-head h1 .sub-line{font-size:17px;font-weight:500;color:var(--slate);letter-spacing:0}
+  #demo .sec-head h1 .sub-line strong{color:var(--navy);font-weight:700}
+  #demo .wrap{max-width:1420px}
+  /* 视口高度不够时收起支架与下巴，保证屏幕本体在首屏完整露出 */
+  @media(max-height:1000px){
+    #demo .stand-neck,#demo .stand-base,#demo .chin{display:none}
+  }
+
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .card:hover{box-shadow:var(--shadow)}
+  .card .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    background:linear-gradient(135deg,rgba(48,65,86,.1),rgba(46,125,91,.12));margin-bottom:16px}
+  .card .ico svg{width:24px;height:24px;display:block}
+  .card h3{font-size:18px;margin-bottom:8px}
+  .card p{color:var(--slate);font-size:14.5px}
+
+  /* Float/Sink spotlight */
+  .spot{background:var(--bg-deep);color:#e8edf4}
+  .spot .sec-head h2{color:#fff} .spot .sec-head p{color:#9fb0c3}
+  .float-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+  .dim{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:28px}
+  .dim h4{font-size:16px;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+  .dim h4 svg{width:18px;height:18px;flex:none}
+  .dim .opt{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.07)}
+  .dim .opt:first-of-type{border-top:0}
+  .dim .opt .tag{width:84px;flex:none;font-weight:700;font-size:13px}
+  .dim .opt .desc{color:#aebccd;font-size:13.5px}
+  .dim .opt .dotc{width:10px;height:10px;border-radius:50%;flex:none}
+  .legend{margin-top:18px;font-size:13px;color:#9fb0c3}
+
+  /* VIP 对比表 */
+  .vip{background:linear-gradient(135deg,#fff,#f4f8f5)}
+  .vp-scroll{max-width:920px;margin:0 auto;background:#fff;border:1px solid var(--line);
+    border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .vp-table{width:100%;border-collapse:collapse}
+  .vp-table th,.vp-table td{padding:13px 18px;text-align:left;vertical-align:middle}
+  .vp-table thead th{font-size:14px;font-weight:800;letter-spacing:.5px;border-bottom:1px solid var(--line)}
+  .vp-table thead .th-func{color:var(--navy)}
+  .vp-table thead .c-free{color:var(--slate)}
+  .vp-table thead .c-vip{color:#1a1300;background:linear-gradient(180deg,#FFD24D,#FFC000)}
+  .vp-table th.c-free,.vp-table th.c-vip{width:96px;text-align:center}
+  .vp-table td{font-size:14.5px;border-bottom:1px solid var(--line)}
+  .vp-table tbody tr:last-child td{border-bottom:0}
+  .vp-table tbody tr:hover td{background:#f8fafc}
+  .vp-table td.c-free,.vp-table td.c-vip{width:96px;text-align:center}
+  .vp-table td.c-vip{background:rgba(255,192,0,.05)}
+  .vp-table tbody tr:hover td.c-vip{background:rgba(255,192,0,.09)}
+  .vp-func b{display:block;font-size:15px;color:var(--ink);font-weight:700}
+  .vp-func span{display:block;font-size:12.5px;color:var(--slate);margin-top:2px;line-height:1.5}
+  .vp-yes{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%}
+  .vp-yes.free{background:rgba(46,125,91,.1)}
+  .vp-yes.vip{background:rgba(255,192,0,.18)}
+  .vp-yes svg{width:13px;height:13px}
+  .vp-no{color:#b6bfcb;font-size:13px}
+  .vp-group td{background:var(--bg-soft);font-size:13px;font-weight:800;color:var(--navy);
+    letter-spacing:.5px;padding:9px 18px;border-bottom:1px solid var(--line)}
+  .vp-group .g-vip{color:#8a5f00}
+  .vp-group .g-cnt{font-weight:600;color:var(--slate);margin-left:6px;letter-spacing:0}
+  .vp-notes{max-width:920px;margin:18px auto 0;font-size:13.5px;color:var(--slate);line-height:1.85}
+  .vp-notes b{color:var(--ink)}
+  .vp-notes .dot{color:#c9b487;margin:0 7px}
+
+  /* CTA + Footer */
+  .cta{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;text-align:center;border-radius:24px;
+    padding:56px 24px;margin:0 auto;max-width:var(--maxw)}
+  .cta h2{font-size:32px;font-weight:820;margin-bottom:10px}
+  .cta p{color:#c5d0de;margin-bottom:26px;font-size:16px}
+  .cta .act-row{justify-content:center}
+  footer{background:var(--bg-deep);color:#9fb0c3;padding:40px 0;margin-top:84px;font-size:14px}
+  .foot-disclaimer{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);
+    font-size:12.5px;line-height:1.75;color:#7e8fa3}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  .foot-inner .brand{color:#fff}
+
+  @media(max-width:900px){
+    .features{grid-template-columns:1fr 1fr}
+    .float-grid{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .menu-btn{display:block}
+    .nav-cta{gap:8px}
+    .nav-links.show{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;
+      background:#fff;padding:18px 24px;gap:14px;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+  }
+  @media(max-width:600px){
+    .features{grid-template-columns:1fr}
+    .nav-cta .btn-primary{display:none}
+    .sec-head h2{font-size:26px}
+    /* 窄屏：h1 与第二行邀约同步收号，避免折行溢出（h1 为 15 字长句，22px 才放得下一行） */
+    #demo .sec-head h1{font-size:22px}
+    #demo .sec-head h1 .sub-line{font-size:13px}
+    /* 窄屏：对比表收紧单元格，勾选列固定宽度防挤压 */
+    .vp-table th,.vp-table td{padding:11px 12px}
+    .vp-table th.c-free,.vp-table th.c-vip,.vp-table td.c-free,.vp-table td.c-vip{width:58px}
+    .vp-func b{font-size:13.5px}
+    .vp-func span{font-size:11.5px}
+    .vp-group td{padding:8px 12px;font-size:12px}
+  }
+</style>
+</head>
+<body data-base="../">
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand"><svg class="mark" viewBox="140 140 744 744" role="img" aria-label="巧桌面 QiaoDesktop"><rect x="140" y="140" width="540" height="540" rx="102" ry="102" fill="#A9CDF7"/><rect x="242" y="242" width="540" height="540" rx="102" ry="102" fill="#90C1FF"/><rect x="344" y="344" width="540" height="540" rx="102" ry="102" fill="#58A6FF"/><rect x="434" y="434" width="138" height="138" rx="33" ry="33" fill="#EEF4FC"/><rect x="656" y="434" width="138" height="138" rx="33" ry="33" fill="#FFB454"/><rect x="434" y="656" width="138" height="138" rx="33" ry="33" fill="#3ECFB2"/><rect x="656" y="656" width="138" height="138" rx="33" ry="33" fill="#EEF4FC"/><g fill="none" stroke="#58A6FF" stroke-width="21.44"><circle cx="503" cy="503" r="40.34"/><line x1="529.0" y1="529.0" x2="545.93" y2="545.93" stroke-linecap="round"/></g><path d="M701.09 673.94 H717.85 A51.06 51.06 0 0 1 717.85 776.06 H701.09 A20 20 0 0 1 681.09 756.06 V693.94 A20 20 0 0 1 701.09 673.94 Z M716.53 695.39 H717.85 A29.61 29.61 0 0 1 717.85 754.61 H716.53 A14 14 0 0 1 702.53 740.61 V709.39 A14 14 0 0 1 716.53 695.39 Z" fill="#58A6FF" fill-rule="evenodd"/></svg> 巧桌面 <span style="font-weight:500;color:var(--slate);font-size:14px">QiaoDesktop</span></div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#demo">在线演示</a>
+      <a href="#float">浮沉方式</a>
+      <a href="#features">功能特性</a>
+      <a href="#vip">VIP 特权</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-sw" role="group" aria-label="语言"><a href="../index.html" hreflang="en" lang="en">EN</a><span class="on" aria-current="true">中文</span></div>
+      <a class="btn btn-primary" href="#download">免费下载</a>
+      <button class="menu-btn" id="menuBtn" aria-label="菜单">≡</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== LIVE DEMO ===== -->
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Live Demo</div>
+      <h1>把文件收进盒子，桌面只留你要的<br><span class="sub-line">Windows 桌面整理工具 · 先玩一遍吧，如果喜欢，那就快去下载吧，大小<strong>仅 4M，绿色免安装</strong>！</span></h1>
+    </div>
+    <div id="qdDemo">
+  <div class="d-wrap">
+  <div class="monitor">
+    <div class="monitor-body">
+      <div class="screen-wrap" id="screenWrap">
+        <div class="stage" id="stage">
+          <img class="layer bg" id="bgA" src="../demo-assets/desk-bg.webp" alt="" draggable="false" fetchpriority="high" />
+          <img class="layer bg hide" id="bgB" alt="" draggable="false" />
+          <div id="boxLayer"></div>
+          <img class="layer l-sidebar" id="lSidebar" src="../demo-assets/ui-sidebar.webp" alt="" draggable="false" decoding="async" />
+          <img class="layer l-topbar" id="lTopbar" src="../demo-assets/ui-topbar.webp" alt="" draggable="false" decoding="async" />
+          <img class="layer l-flyout" id="lFlyout" src="../demo-assets/ui-flyout.webp" alt="" draggable="false" decoding="async" />
+          <img class="layer l-mappanel" id="lMappanel" src="../demo-assets/ui-filepanel.webp" alt="" draggable="false" decoding="async" />
+          <img class="layer l-bfly" id="lBfly" src="../demo-assets/ui-butterfly.webp" alt="切换壁纸" draggable="false" decoding="async" />
+          <button class="bfly-hit" id="bflyHit" aria-label="点击切换壁纸"></button>
+          <div class="bfly-tip" id="bflyTip">点一下切换壁纸，电脑版支持动态壁纸</div>
+          <div class="layer l-settings" id="lSettings">
+            <img data-src="../demo-assets/ui-settings.webp" alt="" draggable="false" />
+            <button class="win-close" id="winClose" aria-label="关闭设置"></button>
+          </div>
+          <div class="btip" id="btip"></div>
+          <div class="tip" id="tip">盒子可以直接拖动；鼠标移到画面顶部或左侧边缘唤出两条栏</div>
+        </div>
+      </div>
+      <div class="chin"><span class="led"></span><span>QiaoDesktop</span></div>
+    </div>
+    <div class="stand-neck"></div>
+    <div class="stand-base"></div>
+  </div>
+
+  <aside class="panel">
+    <div class="p-card">
+      <h3>操作</h3>
+      <p class="desc">点一下看看桌子上的变化</p>
+      <button class="op-btn" id="btnBoxes">添加盒子<span>5 个</span></button>
+      <button class="op-btn" id="btnSummon">在任意界面呼出盒子<span>演示</span></button>
+      <button class="op-btn" id="btnSettings">打开设置<span>设置中心</span></button>
+      <button class="op-btn" id="btnWall">切换壁纸<span id="wallName">默认</span></button>
+      <button class="op-btn" id="btnReset">重置演示<span>恢复初始状态</span></button>
+    </div>
+    <ul class="p-guide">
+      <li><em>鼠标移到顶部或左侧边缘</em><span>收纳栏与映射栏一起滑出</span></li>
+      <li><em>鼠标停在盒子上</em><span>看它是干什么的</span></li>
+      <li><em>点右上角蝴蝶</em><span>换一张壁纸</span></li>
+    </ul>
+  </aside>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLOAT / SINK SPOTLIGHT ===== -->
+<section class="spot" id="float">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker" style="color:var(--gold)">Signature</div>
+      <h2>浮沉方式：让桌面「工作时浮现，闲置时退场」</h2>
+      <p>巧桌面把每个盒子的状态拆成两个维度——平时态决定它闲置时去哪，呼出态决定它被唤起时怎么显示。</p>
+    </div>
+    <div class="float-grid">
+      <div class="dim">
+        <h4><svg viewBox="0 0 24 24" fill="none" stroke="#FFC000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>平时态（闲置时）</h4>
+        <div class="opt"><span class="dotc" style="background:#FFC000"></span><span class="tag">前台显示</span><span class="desc">恒置顶，工作时一直可见</span></div>
+        <div class="opt"><span class="dotc" style="background:#2E7D5B"></span><span class="tag">钉在桌面</span><span class="desc">贴在桌面层，不抢置顶</span></div>
+        <div class="opt"><span class="dotc" style="background:#7c8794"></span><span class="tag">隐藏起来</span><span class="desc">闲置即收起，桌面纯净</span></div>
+      </div>
+      <div class="dim">
+        <h4><svg viewBox="0 0 24 24" fill="none" stroke="#FFC000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 15.9 8.1 20.5 12 15.9 15.9 12 20.5 8.1 15.9 3.5 12 8.1 8.1Z"/></svg>呼出态（被唤起时）</h4>
+        <div class="opt"><span class="dotc" style="background:#FFC000"></span><span class="tag">前台显示</span><span class="desc">唤起即置顶，立刻可用</span></div>
+        <div class="opt"><span class="dotc" style="background:#2E7D5B"></span><span class="tag">钉在桌面</span><span class="desc">唤起后仍是桌面层</span></div>
+        <div class="opt"><span class="dotc" style="background:#7c8794"></span><span class="tag">悬停显示</span><span class="desc">鼠标靠近才显现，用完即隐</span></div>
+      </div>
+    </div>
+    <p class="legend">注：侧栏、收纳盒等部分盒子受父栏联动约束，个别档位不适用时会自动跳过——规则与设置中心完全一致。</p>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Features</div>
+      <h2>桌面整理需要的一切，都在桌面这个最熟悉的位置</h2>
+      <p>收纳、映射、浮沉、壁纸、快捷键——文件整理该有的，巧桌面都给你放在原生桌面之上。</p>
+    </div>
+    <div class="features">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="12.5" width="17" height="8.5" rx="2"/><rect x="6.5" y="3.5" width="11" height="8" rx="2"/></svg></div><h3>盒子收纳</h3><p>把散落桌面的文件与快捷方式收进可调整大小、自由拖拽、排序与重命名的盒子，常用内容一目了然。</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 6a2 2 0 0 1 2-2h3.2l1.5 2h7.8a2 2 0 0 1 2 2v5.5a2 2 0 0 1-2 2H5.5a2 2 0 0 1-2-2Z"/><rect x="13.5" y="12.5" width="7.5" height="5.5" rx="1"/><path d="M17.25 18v1.2"/></svg></div><h3>文件夹映射</h3><p>把任意文件夹直接投影到桌面，无需移动原文件即可浏览与管理，原目录结构原封不动。</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5q2.5-3.5 5 0t5 0t5 0"/><path d="M3 15.5q2.5-3.5 5 0t5 0t5 0"/></svg></div><h3>浮沉方式</h3><p>平时态决定闲置时去哪，呼出态决定唤起怎么显示；两维组合出你顺手的状态，工作区随用随现、闲置自隐。</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="9.5" r="1.8"/><path d="M4.5 17.5 10 12l3.5 3.5 3-3 3.5 3.5"/></svg></div><h3>壁纸切换</h3><p>支持静态与动态壁纸，点击一键切换；VIP 更支持按间隔自动轮换，每次显示桌面都是新的。</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 2.5 4.8 13.2h6.4L9.8 21.5l9.4-11.2h-6.6Z"/></svg></div><h3>边缘热条 / 快捷键</h3><p>Win+` 一键浮沉，长按保活、松手归位；鼠标推到屏幕边缘，热条轻点即唤出，不打断手上的操作。</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M9.5 4v16"/><path d="M13 9.5h5M13 13h5"/></svg></div><h3>常驻侧栏</h3><p>映射栏与收纳栏常驻桌面边缘，整理不占地；收纳盒随主盒隐现，桌面永远清爽。</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="3.5" width="12.5" height="12.5" rx="2"/><rect x="3.5" y="8" width="12.5" height="12.5" rx="2"/></svg></div><h3>双模式文件面板</h3><p>自绘面板与系统资源管理器嵌入式双模式，列表 / 图标视图、拖入拖出、原生文件操作全都支持。</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 19.5 6v6.2c0 4.6-3.1 8-7.5 9.4-4.4-1.4-7.5-4.8-7.5-9.4V6Z"/><path d="M8.8 11.8l2.3 2.3 4.2-4.6"/></svg></div><h3>轻量且安全</h3><p>纯本地运行，文件不上传任何服务器；设置与布局可完整备份、迁移与恢复。</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h3.3M11.7 8.5H20"/><circle cx="9.5" cy="8.5" r="2.2"/><path d="M4 15.5h8.8M17.2 15.5H20"/><circle cx="15" cy="15.5" r="2.2"/></svg></div><h3>外观可定制</h3><p>盒子圆角、透明度、配色随心调；深色 / 浅色随心切换，融入你的系统视觉。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIP ===== -->
+<section class="vip" id="vip">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">VIP</div>
+      <h2>解锁进阶能力</h2>
+      <p>基础整理永久免费，进阶能力 VIP 专享。</p>
+    </div>
+    <div class="vp-scroll">
+      <table class="vp-table">
+        <thead>
+          <tr>
+            <th class="th-func" scope="col">功能</th>
+            <th class="c-free" scope="col">免费版</th>
+            <th class="c-vip" scope="col">VIP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="vp-group"><td colspan="3">基础整理 · 永久免费<span class="g-cnt">10 项</span></td></tr>
+          <tr><td class="vp-func"><b>盒子收纳</b><span>创建、拖拽、排序、重命名、调整大小，常用内容一目了然</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>文件夹映射</b><span>把任意文件夹投影到桌面，原文件原封不动</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>浮沉方式</b><span>平时态 × 呼出态双维度：前台 / 钉在桌面 / 隐藏 / 悬停显示</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>常驻侧栏</b><span>映射栏与收纳栏常驻桌面边缘，整理不占地</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>双模式文件面板</b><span>自绘面板与系统资源管理器嵌入，列表 / 图标视图</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>壁纸切换</b><span>支持静态和动态壁纸，点击一键切换</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>快捷键浮沉</b><span>Win+` 一键收起 / 唤出，长按保合、松手归位</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>外观定制</b><span>盒子圆角、透明度、配色随心调，深色 / 浅色切换</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>备份与恢复</b><span>设置与布局完整备份、迁移、恢复</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>本地优先</b><span>纯本地运行，文件不上传任何服务器</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr class="vp-group"><td colspan="3"><span class="g-vip">进阶能力 · VIP 专享</span><span class="g-cnt">5 项</span></td></tr>
+          <tr><td class="vp-func"><b>超级边缘</b><span>屏幕上 / 左边缘热条唤出，单击、双击独立配置</span></td>
+            <td class="c-free"><span class="vp-no">—</span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>自动切换壁纸</b><span>按间隔自动轮换指定文件夹，每次显示桌面都有新鲜感</span></td>
+            <td class="c-free"><span class="vp-no">—</span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>极速自动下沉</b><span>闲置自动下沉延迟最低可至 300ms，桌面说收就收</span></td>
+            <td class="c-free"><span class="vp-no">—</span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Ctrl 临时解锁</b><span>按住 Ctrl 即可编辑锁定状态的盒子，不用先解锁</span></td>
+            <td class="c-free"><span class="vp-no">—</span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>持续进化</b><span>后续进阶特权持续加入，长期受益</span></td>
+            <td class="c-free"><span class="vp-no">—</span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="vp-notes">
+      <b>15 天全功能免费试用</b>：试用期内 VIP 专享功能全部开放，到期后仅锁定进阶能力<span class="dot">·</span><b>基础整理永久免费</b>
+    </p>
+  </div>
+</section>
+
+<!-- ===== CTA / DOWNLOAD ===== -->
+<section id="download">
+  <div class="cta">
+    <h2>试试巧桌面</h2>
+    <p>下载即用，15 天全功能免费试用，基础整理永久免费。</p>
+    <div class="act-row">
+      <a class="btn btn-primary" href="#">下载 for Windows</a>
+      <a class="btn btn-ghost" href="#features">了解更多</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap foot-inner">
+    <div class="brand"><svg class="mark" viewBox="140 140 744 744" role="img" aria-label="巧桌面 QiaoDesktop"><defs><mask id="holesFoot"><rect x="0" y="0" width="1024" height="1024" fill="white"/><rect x="434" y="434" width="138" height="138" rx="33" ry="33" fill="black"/><rect x="656" y="434" width="138" height="138" rx="33" ry="33" fill="black"/><rect x="434" y="656" width="138" height="138" rx="33" ry="33" fill="black"/><rect x="656" y="656" width="138" height="138" rx="33" ry="33" fill="black"/><g fill="none" stroke="white" stroke-width="21.44"><circle cx="503" cy="503" r="40.34"/><line x1="529.0" y1="529.0" x2="545.93" y2="545.93" stroke-linecap="round"/></g><path d="M701.09 673.94 H717.85 A51.06 51.06 0 0 1 717.85 776.06 H701.09 A20 20 0 0 1 681.09 756.06 V693.94 A20 20 0 0 1 701.09 673.94 Z M716.53 695.39 H717.85 A29.61 29.61 0 0 1 717.85 754.61 H716.53 A14 14 0 0 1 702.53 740.61 V709.39 A14 14 0 0 1 716.53 695.39 Z" fill="white" fill-rule="evenodd"/></mask></defs><g mask="url(#holesFoot)"><rect x="140" y="140" width="540" height="540" rx="102" ry="102" fill="#FFFFFF"/><rect x="242" y="242" width="540" height="540" rx="102" ry="102" fill="#FFFFFF"/><rect x="344" y="344" width="540" height="540" rx="102" ry="102" fill="#FFFFFF"/></g></svg> 巧桌面 QiaoDesktop</div>
+    <div>© 夜书工作室 · 由 zyssj 打造 · 文件不上传 · 本地优先</div>
+    <div class="foot-disclaimer">免责声明：本站截图中的 Microsoft Windows 操作系统界面、图标，以及其他第三方软件的界面、图标、名称与商标，仅用于展示巧桌面在相应系统环境下的功能效果，相关商标及版权归各自权利人所有。巧桌面与微软公司及其他第三方公司不存在任何隶属、赞助或背书关系。如您认为站内内容涉及权利问题，欢迎随时与我们联系，我们将第一时间核实并妥善处理。</div>
+  </div>
+</footer>
+
+<script>
+  // 移动端菜单
+  var menuBtn = document.getElementById('menuBtn');
+  var navLinks = document.getElementById('navLinks');
+  menuBtn && menuBtn.addEventListener('click', function(){ navLinks.classList.toggle('show'); });
+  navLinks && navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ navLinks.classList.remove('show'); });
+  });
+</script>
+
+<script src="../demo.js"></script>
+<script src="https://trtc.io/knocket-sdk/sdk.js?identifier=103298f599c6c5cee6&v=1792565037009" async></script>
+</body>
+</html>
