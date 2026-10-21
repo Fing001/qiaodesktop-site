@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjE0MCAxNDAgNzQ0IDc0NCIgd2lkdGg9IjEwMjQiIGhlaWdodD0iMTAyNCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9InQiPgogIDx0aXRsZSBpZD0idCI+UWlhb0Rlc2t0b3Ag5ben5qGM6Z2iPC90aXRsZT4KICA8ZGVzYz7kuInnm5LkuIrkuIvloIblj6DjgIHliY3lkI7nrYnot53plJnkvY3igJTigJTmnIDov5znm5LmnIDkuq7jgIHkuK3nm5Log4zooazjgIHliY3nm5LkuLvok53vvJvliY3nm5LlhoUgMsOXMiDlm5vmoLzvvJrlt6bkuIrnmb3lnZflhoXlrZfmr40gUe+8iOWHoOS9leWchueOryArIDQ1wrAg6IO25ZuK5bC+77yJ44CB5Y+z5LiK5pqW55Cl54+A44CB5bem5LiL6Z2S57u/44CB5Y+z5LiL55m95Z2X5YaF5a2X5q+NIETvvIjlt6bnq5bmnaHvvIjlt6bop5LlnIbvvIkrIOWPs+WNiueOr++8ieOAguWtl+avjeS4uue6r+WHoOS9leaehOmAoO+8jOS4jeS+nei1luS7u+S9leWtl+S9k+OAgumAj+aYjuW6le+8jOaXoOW6leadvzwvZGVzYz4KCiAgPCEtLSDmnIDov5znm5LvvIjlhYjnlLvvvIzooqvnm5bkvY/lpKfljYrvvIkgLS0+CiAgPHJlY3QgeD0iMTQwIiB5PSIxNDAiIHdpZHRoPSI1NDAiIGhlaWdodD0iNTQwIiByeD0iMTAyIiByeT0iMTAyIiBmaWxsPSIjQTlDREY3Ii8+CgogIDwhLS0g5Lit55uS77ya6IOM6KGs77yM5YGP5bem5LiK6Zyy5Ye65LiKL+W3pui+ueadoSAtLT4KICA8cmVjdCB4PSIyNDIiIHk9IjI0MiIgd2lkdGg9IjU0MCIgaGVpZ2h0PSI1NDAiIHJ4PSIxMDIiIHJ5PSIxMDIiIGZpbGw9IiM5MEMxRkYiLz4KCiAgPCEtLSDliY3nm5LvvJrkuLvok50gLS0+CiAgPHJlY3QgeD0iMzQ0IiB5PSIzNDQiIHdpZHRoPSI1NDAiIGhlaWdodD0iNTQwIiByeD0iMTAyIiByeT0iMTAyIiBmaWxsPSIjNThBNkZGIi8+CgogIDwhLS0g5YmN55uSIDLDlzIg5Zub5qC877ya5bem5LiK55m95Z2X77yIUe+8iS8g5Y+z5LiK55Cl54+AIC8g5bem5LiL6Z2S57u/IC8g5Y+z5LiL55m95Z2X77yIRO+8iSAtLT4KICA8cmVjdCB4PSI0MzQiIHk9IjQzNCIgd2lkdGg9IjEzOCIgaGVpZ2h0PSIxMzgiIHJ4PSIzMyIgcnk9IjMzIiBmaWxsPSIjRUVGNEZDIi8+CiAgPHJlY3QgeD0iNjU2IiB5PSI0MzQiIHdpZHRoPSIxMzgiIGhlaWdodD0iMTM4IiByeD0iMzMiIHJ5PSIzMyIgZmlsbD0iI0ZGQjQ1NCIvPgogIDxyZWN0IHg9IjQzNCIgeT0iNjU2IiB3aWR0aD0iMTM4IiBoZWlnaHQ9IjEzOCIgcng9IjMzIiByeT0iMzMiIGZpbGw9IiMzRUNGQjIiLz4KICA8cmVjdCB4PSI2NTYiIHk9IjY1NiIgd2lkdGg9IjEzOCIgaGVpZ2h0PSIxMzgiIHJ4PSIzMyIgcnk9IjMzIiBmaWxsPSIjRUVGNEZDIi8+CgogIDwhLS0g5a2X5q+NIFHvvJrlnIbnjq/vvIjkuK3lv4Pnur8gcj00MC4zNO+8jOeslOeUuyAyMS40NO+8jOS4juWkluWchi/lhoXlnIblkIzlv4PvvIkrIDQ1wrAg6IO25ZuK5bC+IC0tPgogIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzU4QTZGRiIgc3Ryb2tlLXdpZHRoPSIyMS40NCI+CiAgICA8Y2lyY2xlIGN4PSI1MDMiIGN5PSI1MDMiIHI9IjQwLjM0Ii8+CiAgICA8bGluZSB4MT0iNTI5LjAiIHkxPSI1MjkuMCIgeDI9IjU0NS45MyIgeTI9IjU0NS45MyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPC9nPgoKICA8IS0tIOWtl+avjSBE77ya5bem56uW5p2h77yI5bem6KeS5ZyGIDIw77yJKyDkuIov5LiL5qiq5p2hICsg5Y+z5Y2K546v77ybCiAgICAgICDlhoXlrZTvvIhjb3VudGVy77yJ5Z6C55u06IyD5Zu06Lef6ZqP56yU55S75pS257yp77yM5aSWL+WGheS4pOadoeWtkOi3r+W+hOS7pSBldmVub2RkIOaMluepuiAtLT4KICA8cGF0aCBkPSJNNzAxLjA5IDY3My45NCBINzE3Ljg1IEE1MS4wNiA1MS4wNiAwIDAgMSA3MTcuODUgNzc2LjA2IEg3MDEuMDkgQTIwIDIwIDAgMCAxIDY4MS4wOSA3NTYuMDYgVjY5My45NCBBMjAgMjAgMCAwIDEgNzAxLjA5IDY3My45NCBaIE03MTYuNTMgNjk1LjM5IEg3MTcuODUgQTI5LjYxIDI5LjYxIDAgMCAxIDcxNy44NSA3NTQuNjEgSDcxNi41MyBBMTQgMTQgMCAwIDEgNzAyLjUzIDc0MC42MSBWNzA5LjM5IEExNCAxNCAwIDAgMSA3MTYuNTMgNjk1LjM5IFoiCiAgICAgICAgZmlsbD0iIzU4QTZGRiIgZmlsbC1ydWxlPSJldmVub2RkIi8+Cjwvc3ZnPgo=" />
+<title>QiaoDesktop — a clean, tidy desktop for Windows</title>
+<meta name="description" content="QiaoDesktop is a Windows desktop organizer and beautifier: file boxes, folder mapping, idle/active modes, wallpaper switching and edge hot zones. Runs locally — your files are never uploaded." />
+<!-- 分享卡（og / twitter）：og:url、canonical 与 og:image 的域名需与最终部署域名一致 -->
+<link rel="canonical" href="https://qiaodesktop.com/" />
+<link rel="alternate" hreflang="en" href="https://qiaodesktop.com/" />
+<link rel="alternate" hreflang="zh-Hans" href="https://qiaodesktop.com/zh/" />
+<link rel="alternate" hreflang="x-default" href="https://qiaodesktop.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="QiaoDesktop" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="zh_CN" />
+<meta property="og:url" content="https://qiaodesktop.com/" />
+<meta property="og:title" content="QiaoDesktop — a clean, tidy desktop for Windows" />
+<meta property="og:description" content="A Windows desktop organizer: put your files in boxes and keep only what you need on screen. 4 MB, no install required." />
+<meta property="og:image" content="https://qiaodesktop.com/demo-assets/og-en.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="QiaoDesktop — put your files in boxes, keep your desktop clear" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="QiaoDesktop — a clean, tidy desktop for Windows" />
+<meta name="twitter:description" content="A Windows desktop organizer: files into boxes, desktop stays clear. 4 MB, no install required." />
+<meta name="twitter:image" content="https://qiaodesktop.com/demo-assets/og-en.jpg" />
+<link rel="stylesheet" href="demo.css" />
+<style>
+  :root{
+    --navy:#304156;        /* 侧栏深蓝（取自 qd 设置中心） */
+    --navy-2:#263345;
+    --gold:#FFC000;        /* 强调金 */
+    --green:#2E7D5B;       /* 选中绿 */
+    --ink:#1f2733;
+    --slate:#5b6573;
+    --line:#e6e9ef;
+    --bg:#ffffff;
+    --bg-soft:#f6f8fb;
+    --bg-deep:#0f1622;
+    --radius:16px;
+    --shadow:0 10px 30px rgba(16,22,34,.08);
+    --shadow-lg:0 24px 60px rgba(16,22,34,.16);
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--gold);color:#1a1300}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:#c9d2de;border:3px solid transparent;border-radius:999px;background-clip:content-box}
+  ::-webkit-scrollbar-thumb:hover{background:#aeb9ca;border:3px solid transparent;background-clip:content-box}
+  ::-webkit-scrollbar-track{background:transparent}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;
+    padding:12px 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  }
+  .btn-primary{background:var(--gold);color:#1a1300}
+  .btn-primary:hover{background:#E8AE00}
+  .btn-ghost{background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+  /* ===== Nav ===== */
+  header.nav{
+    position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.5px}
+  .brand .mark{width:30px;height:30px;display:block;flex:none}
+  .nav-links{display:flex;gap:28px;font-size:15px;color:var(--slate);font-weight:500}
+  .nav-links a:hover{color:var(--navy)}
+  .nav-cta{display:flex;align-items:center;gap:12px}
+  .menu-btn{display:none;background:none;border:0;font-size:26px;cursor:pointer;color:var(--navy)}
+
+  /* Language switch: EN / 中文 segmented pill */
+  .lang-sw{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:2px;font-size:13px;font-weight:700;color:var(--slate);background:#fff}
+  .lang-sw a,.lang-sw .on{padding:4px 10px;border-radius:999px;line-height:1.5}
+  .lang-sw .on{background:var(--navy);color:#fff}
+  .lang-sw a:hover{color:var(--navy)}
+
+  /* 按钮排（下载区 CTA 使用） */
+  .act-row{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+
+
+  /* ===== Sections ===== */
+  section{padding:84px 0}
+  .sec-head{text-align:center;max-width:720px;margin:0 auto 48px}
+  .sec-head .kicker{color:var(--gold);font-weight:800;letter-spacing:2px;font-size:13px;text-transform:uppercase}
+  .sec-head h2{font-size:34px;font-weight:820;margin:10px 0 12px;letter-spacing:-.4px}
+  .sec-head p{color:var(--slate);font-size:16px}
+  /* 浮沉区描述与功能区标题要单行显示：默认 720px 容器会折行，这两处放宽到 900px */
+  #float .sec-head,
+  #features .sec-head{max-width:900px}
+
+  /* ===== 交互演示模块（模块内样式见 demo.css，作用域 #qdDemo） ===== */
+  /* 全站唯一 h1：页面第一屏主标题（视觉与原有 h2 一致） */
+  #demo{background:linear-gradient(180deg,#f8fafc,#eef2f7);scroll-margin-top:74px;padding:20px 0 32px}
+  #demo .sec-head{margin-bottom:14px;max-width:860px}
+  #demo .sec-head h1{font-size:34px;font-weight:820;letter-spacing:-.4px;margin:2px 0 6px;line-height:1.28}
+  /* 标题第二行：下载邀约，比标题小两档、灰色，规格词加粗提深色 */
+  #demo .sec-head h1 .sub-line{font-size:17px;font-weight:500;color:var(--slate);letter-spacing:0}
+  #demo .sec-head h1 .sub-line strong{color:var(--navy);font-weight:700}
+  #demo .wrap{max-width:1420px}
+  /* 视口高度不够时收起支架与下巴，保证屏幕本体在首屏完整露出 */
+  @media(max-height:1000px){
+    #demo .stand-neck,#demo .stand-base,#demo .chin{display:none}
+  }
+
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .card:hover{box-shadow:var(--shadow)}
+  .card .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    background:linear-gradient(135deg,rgba(48,65,86,.1),rgba(46,125,91,.12));margin-bottom:16px}
+  .card .ico svg{width:24px;height:24px;display:block}
+  .card h3{font-size:18px;margin-bottom:8px}
+  .card p{color:var(--slate);font-size:14.5px}
+
+  /* Float/Sink spotlight */
+  .spot{background:var(--bg-deep);color:#e8edf4}
+  .spot .sec-head h2{color:#fff} .spot .sec-head p{color:#9fb0c3}
+  .float-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+  .dim{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:28px}
+  .dim h4{font-size:16px;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+  .dim h4 svg{width:18px;height:18px;flex:none}
+  .dim .opt{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.07)}
+  .dim .opt:first-of-type{border-top:0}
+  .dim .opt .tag{width:126px;flex:none;font-weight:700;font-size:13px}
+  .dim .opt .desc{color:#aebccd;font-size:13.5px}
+  .dim .opt .dotc{width:10px;height:10px;border-radius:50%;flex:none}
+  .legend{margin-top:18px;font-size:13px;color:#9fb0c3}
+
+  /* VIP 对比表 */
+  .vip{background:linear-gradient(135deg,#fff,#f4f8f5)}
+  .vp-scroll{max-width:920px;margin:0 auto;background:#fff;border:1px solid var(--line);
+    border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .vp-table{width:100%;border-collapse:collapse}
+  .vp-table th,.vp-table td{padding:13px 18px;text-align:left;vertical-align:middle}
+  .vp-table thead th{font-size:14px;font-weight:800;letter-spacing:.5px;border-bottom:1px solid var(--line)}
+  .vp-table thead .th-func{color:var(--navy)}
+  .vp-table thead .c-free{color:var(--slate)}
+  .vp-table thead .c-vip{color:#1a1300;background:linear-gradient(180deg,#FFD24D,#FFC000)}
+  .vp-table th.c-free,.vp-table th.c-vip{width:96px;text-align:center}
+  .vp-table td{font-size:14.5px;border-bottom:1px solid var(--line)}
+  .vp-table tbody tr:last-child td{border-bottom:0}
+  .vp-table tbody tr:hover td{background:#f8fafc}
+  .vp-table td.c-free,.vp-table td.c-vip{width:96px;text-align:center}
+  .vp-table td.c-vip{background:rgba(255,192,0,.05)}
+  .vp-table tbody tr:hover td.c-vip{background:rgba(255,192,0,.09)}
+  .vp-func b{display:block;font-size:15px;color:var(--ink);font-weight:700}
+  .vp-func span{display:block;font-size:12.5px;color:var(--slate);margin-top:2px;line-height:1.5}
+  .vp-yes{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%}
+  .vp-yes.free{background:rgba(46,125,91,.1)}
+  .vp-yes.vip{background:rgba(255,192,0,.18)}
+  .vp-yes svg{width:13px;height:13px}
+  .vp-no{color:#b6bfcb;font-size:13px}
+  .vp-group td{background:var(--bg-soft);font-size:13px;font-weight:800;color:var(--navy);
+    letter-spacing:.5px;padding:9px 18px;border-bottom:1px solid var(--line)}
+  .vp-group .g-vip{color:#8a5f00}
+  .vp-group .g-cnt{font-weight:600;color:var(--slate);margin-left:6px;letter-spacing:0}
+  .vp-notes{max-width:920px;margin:18px auto 0;font-size:13.5px;color:var(--slate);line-height:1.85}
+  .vp-notes b{color:var(--ink)}
+  .vp-notes .dot{color:#c9b487;margin:0 7px}
+
+  /* CTA + Footer */
+  .cta{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;text-align:center;border-radius:24px;
+    padding:56px 24px;margin:0 auto;max-width:var(--maxw)}
+  .cta h2{font-size:32px;font-weight:820;margin-bottom:10px}
+  .cta p{color:#c5d0de;margin-bottom:26px;font-size:16px}
+  .cta .act-row{justify-content:center}
+  footer{background:var(--bg-deep);color:#9fb0c3;padding:40px 0;margin-top:84px;font-size:14px}
+  .foot-disclaimer{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);
+    font-size:12.5px;line-height:1.75;color:#7e8fa3}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  .foot-inner .brand{color:#fff}
+
+  @media(max-width:900px){
+    .features{grid-template-columns:1fr 1fr}
+    .float-grid{grid-template-columns:1fr}
+    .nav-links{display:none}
+    .menu-btn{display:block}
+    .nav-cta{gap:8px}
+    .nav-links.show{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;
+      background:#fff;padding:18px 24px;gap:14px;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+  }
+  @media(max-width:600px){
+    .features{grid-template-columns:1fr}
+    .nav-cta .btn-primary{display:none}
+    .sec-head h2{font-size:26px}
+    /* 窄屏：h1 与第二行邀约同步收号，避免折行溢出（h1 为 15 字长句，22px 才放得下一行） */
+    #demo .sec-head h1{font-size:22px}
+    #demo .sec-head h1 .sub-line{font-size:13px}
+    /* 窄屏：对比表收紧单元格，勾选列固定宽度防挤压 */
+    .vp-table th,.vp-table td{padding:11px 12px}
+    .vp-table th.c-free,.vp-table th.c-vip,.vp-table td.c-free,.vp-table td.c-vip{width:58px}
+    .vp-func b{font-size:13.5px}
+    .vp-func span{font-size:11.5px}
+    .vp-group td{padding:8px 12px;font-size:12px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand"><svg class="mark" viewBox="140 140 744 744" role="img" aria-label="QiaoDesktop"><rect x="140" y="140" width="540" height="540" rx="102" ry="102" fill="#A9CDF7"/><rect x="242" y="242" width="540" height="540" rx="102" ry="102" fill="#90C1FF"/><rect x="344" y="344" width="540" height="540" rx="102" ry="102" fill="#58A6FF"/><rect x="434" y="434" width="138" height="138" rx="33" ry="33" fill="#EEF4FC"/><rect x="656" y="434" width="138" height="138" rx="33" ry="33" fill="#FFB454"/><rect x="434" y="656" width="138" height="138" rx="33" ry="33" fill="#3ECFB2"/><rect x="656" y="656" width="138" height="138" rx="33" ry="33" fill="#EEF4FC"/><g fill="none" stroke="#58A6FF" stroke-width="21.44"><circle cx="503" cy="503" r="40.34"/><line x1="529.0" y1="529.0" x2="545.93" y2="545.93" stroke-linecap="round"/></g><path d="M701.09 673.94 H717.85 A51.06 51.06 0 0 1 717.85 776.06 H701.09 A20 20 0 0 1 681.09 756.06 V693.94 A20 20 0 0 1 701.09 673.94 Z M716.53 695.39 H717.85 A29.61 29.61 0 0 1 717.85 754.61 H716.53 A14 14 0 0 1 702.53 740.61 V709.39 A14 14 0 0 1 716.53 695.39 Z" fill="#58A6FF" fill-rule="evenodd"/></svg> QiaoDesktop</div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#demo">Live Demo</a>
+      <a href="#float">Idle / Active</a>
+      <a href="#features">Features</a>
+      <a href="#vip">VIP</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-sw" role="group" aria-label="Language"><span class="on" aria-current="true">EN</span><a href="zh/index.html" hreflang="zh-Hans" lang="zh-CN">中文</a></div>
+      <a class="btn btn-primary" href="#download">Download free</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu">≡</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== LIVE DEMO ===== -->
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Live Demo</div>
+      <h1>Put your files in boxes.<br><span class="sub-line">A Windows desktop organizer · try it first — then it's just <strong>4&nbsp;MB, no install needed</strong>.</span></h1>
+    </div>
+    <div id="qdDemo">
+  <div class="d-wrap">
+  <div class="monitor">
+    <div class="monitor-body">
+      <div class="screen-wrap" id="screenWrap">
+        <div class="stage" id="stage">
+          <img class="layer bg" id="bgA" src="demo-assets/desk-bg.webp" alt="" draggable="false" fetchpriority="high" />
+          <img class="layer bg hide" id="bgB" alt="" draggable="false" />
+          <div id="boxLayer"></div>
+          <img class="layer l-sidebar" id="lSidebar" src="demo-assets/ui-sidebar.webp" alt="" draggable="false" decoding="async" />
+          <img class="layer l-topbar" id="lTopbar" src="demo-assets/ui-topbar.webp" alt="" draggable="false" decoding="async" />
+          <img class="layer l-flyout" id="lFlyout" src="demo-assets/ui-flyout.webp" alt="" draggable="false" decoding="async" />
+          <img class="layer l-mappanel" id="lMappanel" src="demo-assets/ui-filepanel.webp" alt="" draggable="false" decoding="async" />
+          <img class="layer l-bfly" id="lBfly" src="demo-assets/ui-butterfly.webp" alt="Switch wallpaper" draggable="false" decoding="async" />
+          <button class="bfly-hit" id="bflyHit" aria-label="Switch wallpaper"></button>
+          <div class="bfly-tip" id="bflyTip">Click to switch the wallpaper — the desktop app supports video wallpapers</div>
+          <div class="layer l-settings" id="lSettings">
+            <img data-src="demo-assets/ui-settings.webp" alt="" draggable="false" />
+            <button class="win-close" id="winClose" aria-label="Close settings"></button>
+          </div>
+          <div class="btip" id="btip"></div>
+          <div class="tip" id="tip">Boxes can be dragged — move the cursor to the top or left edge to reveal both bars</div>
+        </div>
+      </div>
+      <div class="chin"><span class="led"></span><span>QiaoDesktop</span></div>
+    </div>
+    <div class="stand-neck"></div>
+    <div class="stand-base"></div>
+  </div>
+
+  <aside class="panel">
+    <div class="p-card">
+      <h3>Controls</h3>
+      <p class="desc">Click around and watch the desktop change</p>
+      <button class="op-btn" id="btnBoxes">Add boxes<span>5 boxes</span></button>
+      <button class="op-btn" id="btnSummon">Summon over any window<span>Demo</span></button>
+      <button class="op-btn" id="btnSettings">Open Settings<span>Settings</span></button>
+      <button class="op-btn" id="btnWall">Switch wallpaper<span id="wallName">Default</span></button>
+      <button class="op-btn" id="btnReset">Reset demo<span>Back to start</span></button>
+    </div>
+    <ul class="p-guide">
+      <li><em>Move to the top or left edge</em><span>Dock Bar and Mapping Bar slide out together</span></li>
+      <li><em>Hover over a box</em><span>See what it does</span></li>
+      <li><em>Click the butterfly</em><span>Change the wallpaper</span></li>
+    </ul>
+  </aside>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLOAT / SINK SPOTLIGHT ===== -->
+<section class="spot" id="float">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker" style="color:var(--gold)">Signature</div>
+      <h2>Idle / Active: boxes surface while you work, step back when you don't</h2>
+      <p>Every box carries two states — the idle state decides where it goes when unused, the active state decides how it appears when summoned.</p>
+    </div>
+    <div class="float-grid">
+      <div class="dim">
+        <h4><svg viewBox="0 0 24 24" fill="none" stroke="#FFC000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>Idle state (when unused)</h4>
+        <div class="opt"><span class="dotc" style="background:#FFC000"></span><span class="tag">Foreground</span><span class="desc">Always on top, visible while you work</span></div>
+        <div class="opt"><span class="dotc" style="background:#2E7D5B"></span><span class="tag">Pin to Desktop</span><span class="desc">Stays on the desktop layer, never steals top</span></div>
+        <div class="opt"><span class="dotc" style="background:#7c8794"></span><span class="tag">Hide away</span><span class="desc">Tucked away when idle, desktop stays clean</span></div>
+      </div>
+      <div class="dim">
+        <h4><svg viewBox="0 0 24 24" fill="none" stroke="#FFC000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 15.9 8.1 20.5 12 15.9 15.9 12 20.5 8.1 15.9 3.5 12 8.1 8.1Z"/></svg>Active state (when summoned)</h4>
+        <div class="opt"><span class="dotc" style="background:#FFC000"></span><span class="tag">Foreground</span><span class="desc">On top the moment it is summoned</span></div>
+        <div class="opt"><span class="dotc" style="background:#2E7D5B"></span><span class="tag">Pin to Desktop</span><span class="desc">Stays on the desktop layer</span></div>
+        <div class="opt"><span class="dotc" style="background:#7c8794"></span><span class="tag">Show on Hover</span><span class="desc">Appears as the cursor nears, gone after use</span></div>
+      </div>
+    </div>
+    <p class="legend">Note: bars and docked boxes inherit constraints from their parent bar, so a few options are skipped automatically — the same rules as in Settings.</p>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Features</div>
+      <h2>Everything desktop tidying needs, right where you already are</h2>
+      <p>Boxes, mapping, idle/active modes, wallpapers, hotkeys — all the essentials, layered on the native desktop.</p>
+    </div>
+    <div class="features">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="12.5" width="17" height="8.5" rx="2"/><rect x="6.5" y="3.5" width="11" height="8" rx="2"/></svg></div><h3>Boxes</h3><p>Gather scattered files and shortcuts into resizable, draggable boxes you can sort and rename — everyday items at a glance.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 6a2 2 0 0 1 2-2h3.2l1.5 2h7.8a2 2 0 0 1 2 2v5.5a2 2 0 0 1-2 2H5.5a2 2 0 0 1-2-2Z"/><rect x="13.5" y="12.5" width="7.5" height="5.5" rx="1"/><path d="M17.25 18v1.2"/></svg></div><h3>Folder Mapping</h3><p>Project any folder onto the desktop and manage it without moving a single file — the original folder stays exactly as it is.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5q2.5-3.5 5 0t5 0t5 0"/><path d="M3 15.5q2.5-3.5 5 0t5 0t5 0"/></svg></div><h3>Idle / Active Modes</h3><p>The idle state sets where boxes go when unused; the active state sets how they appear when summoned. Mix both into the behaviour you like.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="9.5" r="1.8"/><path d="M4.5 17.5 10 12l3.5 3.5 3-3 3.5 3.5"/></svg></div><h3>Wallpaper Switch</h3><p>Images and video wallpapers, one click to switch. VIP adds automatic rotation on a timer, so the desktop is always fresh.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 2.5 4.8 13.2h6.4L9.8 21.5l9.4-11.2h-6.6Z"/></svg></div><h3>Edge Hot Zones &amp; Hotkeys</h3><p>Win+` toggles boxes — hold to keep them up, release to send them back. Push the cursor to the screen edge and the hot zone brings them out without breaking your flow.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M9.5 4v16"/><path d="M13 9.5h5M13 13h5"/></svg></div><h3>Dock Bars</h3><p>The Mapping Bar and Dock Bar live at the screen edges without taking room from your work; docked boxes follow their parent box in and out.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="3.5" width="12.5" height="12.5" rx="2"/><rect x="3.5" y="8" width="12.5" height="12.5" rx="2"/></svg></div><h3>Dual-mode File Panel</h3><p>A self-drawn panel or an embedded File Explorer view — list and icon layouts, drag in and out, native file operations included.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 19.5 6v6.2c0 4.6-3.1 8-7.5 9.4-4.4-1.4-7.5-4.8-7.5-9.4V6Z"/><path d="M8.8 11.8l2.3 2.3 4.2-4.6"/></svg></div><h3>Lightweight &amp; Private</h3><p>Runs entirely on your machine and never uploads your files. Settings and layouts can be backed up, migrated and restored.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#304156" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.5h3.3M11.7 8.5H20"/><circle cx="9.5" cy="8.5" r="2.2"/><path d="M4 15.5h8.8M17.2 15.5H20"/><circle cx="15" cy="15.5" r="2.2"/></svg></div><h3>Custom Appearance</h3><p>Tune box corner radius, opacity and colours, and switch between light and dark to blend into your system.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VIP ===== -->
+<section class="vip" id="vip">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">VIP</div>
+      <h2>Unlock advanced features</h2>
+      <p>Basic tidying is free forever. Advanced features are VIP.</p>
+    </div>
+    <div class="vp-scroll">
+      <table class="vp-table">
+        <thead>
+          <tr>
+            <th class="th-func" scope="col">Feature</th>
+            <th class="c-free" scope="col">Free</th>
+            <th class="c-vip" scope="col">VIP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="vp-group"><td colspan="3">Basic tidying · free forever<span class="g-cnt">10</span></td></tr>
+          <tr><td class="vp-func"><b>Boxes</b><span>Create, drag, sort, rename and resize; everyday items in view</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Folder Mapping</b><span>Project any folder to the desktop; originals untouched</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Idle / Active Modes</b><span>Two dimensions: foreground, pin to desktop, hide, show on hover</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Dock Bars</b><span>Mapping Bar and Dock Bar stay at the screen edges</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Dual-mode File Panel</b><span>Self-drawn or embedded Explorer, list or icon view</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Wallpaper Switch</b><span>Images and video wallpapers, one click</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Hotkey Toggle</b><span>Win+` to sink or summon; hold to keep, release to return</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Appearance</b><span>Corner radius, opacity and colours; light and dark themes</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Backup &amp; Restore</b><span>Full backup, migration and restore of settings and layouts</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Local First</b><span>Runs locally; nothing is uploaded</span></td>
+            <td class="c-free"><span class="vp-yes free"><svg viewBox="0 0 24 24" fill="none" stroke="#2E7D5B" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr class="vp-group"><td colspan="3"><span class="g-vip">Advanced · VIP only</span><span class="g-cnt">5</span></td></tr>
+          <tr><td class="vp-func"><b>Super Edges</b><span>Top and left edge hot zones, with separate single and double click actions</span></td>
+            <td class="c-free"><span class="vp-no">—</span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Auto Wallpaper Rotation</b><span>Rotate a wallpaper folder on an interval for a fresh desktop every time</span></td>
+            <td class="c-free"><span class="vp-no">—</span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Instant Auto-Sink</b><span>Auto-sink delay down to 300 ms — the desktop clears on cue</span></td>
+            <td class="c-free"><span class="vp-no">—</span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Ctrl Temporary Unlock</b><span>Hold Ctrl to edit a locked box without unlocking it first</span></td>
+            <td class="c-free"><span class="vp-no">—</span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+          <tr><td class="vp-func"><b>Keeps Evolving</b><span>New advanced perks keep arriving over time</span></td>
+            <td class="c-free"><span class="vp-no">—</span></td>
+            <td class="c-vip"><span class="vp-yes vip"><svg viewBox="0 0 24 24" fill="none" stroke="#B8791A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="vp-notes">
+      <b>15-day full-feature trial</b>: every VIP feature is open during the trial; afterwards only advanced features lock<span class="dot">·</span><b>basic tidying stays free forever</b>
+    </p>
+  </div>
+</section>
+
+<!-- ===== CTA / DOWNLOAD ===== -->
+<section id="download">
+  <div class="cta">
+    <h2>Try QiaoDesktop</h2>
+    <p>Download and go — 15-day full-feature trial, basic tidying free forever.</p>
+    <div class="act-row">
+      <a class="btn btn-primary" href="#">Download for Windows</a>
+      <a class="btn btn-ghost" href="#features">Learn more</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap foot-inner">
+    <div class="brand"><svg class="mark" viewBox="140 140 744 744" role="img" aria-label="QiaoDesktop"><defs><mask id="holesFoot"><rect x="0" y="0" width="1024" height="1024" fill="white"/><rect x="434" y="434" width="138" height="138" rx="33" ry="33" fill="black"/><rect x="656" y="434" width="138" height="138" rx="33" ry="33" fill="black"/><rect x="434" y="656" width="138" height="138" rx="33" ry="33" fill="black"/><rect x="656" y="656" width="138" height="138" rx="33" ry="33" fill="black"/><g fill="none" stroke="white" stroke-width="21.44"><circle cx="503" cy="503" r="40.34"/><line x1="529.0" y1="529.0" x2="545.93" y2="545.93" stroke-linecap="round"/></g><path d="M701.09 673.94 H717.85 A51.06 51.06 0 0 1 717.85 776.06 H701.09 A20 20 0 0 1 681.09 756.06 V693.94 A20 20 0 0 1 701.09 673.94 Z M716.53 695.39 H717.85 A29.61 29.61 0 0 1 717.85 754.61 H716.53 A14 14 0 0 1 702.53 740.61 V709.39 A14 14 0 0 1 716.53 695.39 Z" fill="white" fill-rule="evenodd"/></mask></defs><g mask="url(#holesFoot)"><rect x="140" y="140" width="540" height="540" rx="102" ry="102" fill="#FFFFFF"/><rect x="242" y="242" width="540" height="540" rx="102" ry="102" fill="#FFFFFF"/><rect x="344" y="344" width="540" height="540" rx="102" ry="102" fill="#FFFFFF"/></g></svg> QiaoDesktop</div>
+    <div>© Yeshu Studio · Built by zyssj · No uploads · Local first</div>
+    <div class="foot-disclaimer">Disclaimer: the Microsoft Windows interface, icons, and the interfaces, icons, names and trademarks of other third-party software shown in the screenshots on this site are used solely to demonstrate how QiaoDesktop works in those environments. All such trademarks and copyrights belong to their respective owners. QiaoDesktop is not affiliated with, sponsored by, or endorsed by Microsoft or any other third party. If you believe any content here raises a rights issue, please contact us and we will verify and address it promptly.</div>
+  </div>
+</footer>
+
+<script>
+  // 移动端菜单
+  var menuBtn = document.getElementById('menuBtn');
+  var navLinks = document.getElementById('navLinks');
+  menuBtn && menuBtn.addEventListener('click', function(){ navLinks.classList.toggle('show'); });
+  navLinks && navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ navLinks.classList.remove('show'); });
+  });
+</script>
+
+<script src="demo.js"></script>
+<script src="https://trtc.io/knocket-sdk/sdk.js?identifier=103298f599c6c5cee6&v=1792565037009" async></script>
+</body>
+</html>

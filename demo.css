@@ -1,0 +1,499 @@
+/* ==========================================================================
+   巧桌面 · 交互演示（作用域 #qdDemo）
+   index.html 首页内嵌的交互演示模块专用，请勿在此写页面级样式。
+   ========================================================================== */
+
+#qdDemo{
+  --gold:#B8791A;--navy:#304156;--navy-2:#263345;--green:#2E7D5B;
+  --ink:#1f2733;--slate:#5b6573;--line:#e6e9ef;--bg:#ffffff;--bg-soft:#f6f8fb;
+  --shadow:0 2px 10px rgba(20,30,45,.06);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
+  font-size:16px;line-height:1.5;color:var(--ink);-webkit-font-smoothing:antialiased;
+}
+#qdDemo a{color:inherit;text-decoration:none}
+
+#qdDemo .d-wrap{
+  max-width:1440px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 292px;
+  gap:20px;
+  align-items:start;
+}
+@media(max-width:980px){
+  #qdDemo .d-wrap{
+    grid-template-columns:1fr;
+  }
+}
+#qdDemo .monitor{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+#qdDemo .monitor-body{
+  position:relative;
+  width:100%;
+  padding:14px 14px 0;
+  border-radius:18px;
+  background:linear-gradient(158deg,#3d4a5a 0%,#28313d 38%,#151b23 100%);
+  box-shadow:0 34px 66px rgba(12,18,26,.32),inset 0 2px 0 rgba(255,255,255,.11),
+      inset 0 -2px 0 rgba(0,0,0,.55),0 0 0 1px rgba(10,16,24,.55);
+}
+#qdDemo .chin{
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  color:#7c8a9b;
+  font-size:10px;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:2.3px;
+  text-transform:uppercase;
+}
+#qdDemo .chin .led{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#4ade9a;
+  box-shadow:0 0 9px rgba(74,222,154,.95),inset 0 0 2px rgba(255,255,255,.9);
+}
+#qdDemo .stand-neck{
+  width:118px;
+  height:32px;
+  background:linear-gradient(180deg,#39434f,#1a2029);
+  clip-path:polygon(17% 0,83% 0,100% 100%,0 100%);
+}
+#qdDemo .stand-base{
+  width:252px;
+  height:16px;
+  border-radius:50% 50% 46% 46%/78% 78% 32% 32%;
+  background:linear-gradient(180deg,#3b4552,#151b22);
+  box-shadow:0 22px 34px rgba(12,18,26,.30);
+}
+@media(max-width:760px){
+  #qdDemo .monitor-body{
+    padding:9px 9px 0;
+    border-radius:14px;
+  }
+  #qdDemo .chin{
+    height:24px;
+    font-size:8.5px;
+    letter-spacing:1.6px;
+    gap:7px;
+  }
+  #qdDemo .chin .led{
+    width:5px;
+    height:5px;
+  }
+  #qdDemo .stand-neck{
+    width:84px;
+    height:22px;
+  }
+  #qdDemo .stand-base{
+    width:168px;
+    height:12px;
+  }
+}
+#qdDemo .screen-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:2158/1366;
+  border-radius:4px;
+  overflow:hidden;
+  background:#0f1622;
+  user-select:none;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.6);
+}
+#qdDemo .stage{
+  position:absolute;
+  left:0;
+  top:0;
+  width:2158px;
+  height:1366px;
+  transform-origin:0 0;
+}
+#qdDemo .layer{
+  position:absolute;
+  display:block;
+  pointer-events:none;
+  -webkit-user-drag:none;
+  user-select:none;
+}
+#qdDemo .bg{
+  left:0;
+  top:0;
+  width:2158px;
+  height:1366px;
+  object-fit:cover;
+  transition:opacity .45s ease,transform .55s cubic-bezier(.22,.9,.28,1),filter .55s ease;
+}
+#qdDemo .bg.hide{
+  opacity:0;
+}
+#qdDemo .l-topbar{
+  left:0;
+  top:0;
+  width:2158px;
+  height:89px;
+  z-index:12;
+  transform:translateY(-102%);
+  transition:transform .34s cubic-bezier(.22,.9,.28,1);
+}
+#qdDemo .l-topbar.on{
+  transform:translateY(0);
+}
+/* 常态扁平贴边；只有“呼出演示”浮在窗口之上时才加投影区分层次 */
+#qdDemo .l-topbar.lift{
+  filter:drop-shadow(0 16px 24px rgba(8,14,24,.20));
+}
+#qdDemo .l-sidebar{
+  left:0;
+  top:0;
+  width:89px;
+  height:1366px;
+  z-index:13;
+  transform:translateX(-104%);
+  transition:transform .34s cubic-bezier(.22,.9,.28,1);
+}
+#qdDemo .l-sidebar.on{
+  transform:translateX(0);
+}
+/* 常态扁平贴边；只有“呼出演示”浮在窗口之上时才加投影区分层次 */
+#qdDemo .l-sidebar.lift{
+  filter:drop-shadow(16px 0 24px rgba(8,14,24,.20));
+}
+#qdDemo .bx{
+  position:absolute;
+  pointer-events:none;
+  cursor:grab;
+  opacity:0;
+  transform:scale(.94);
+  transform-origin:50% 50%;
+  transition:opacity .34s ease,transform .34s cubic-bezier(.22,.9,.28,1);
+  will-change:transform,opacity;
+  z-index:20;
+}
+#qdDemo .bx.on{
+  opacity:1;
+  transform:scale(1);
+  pointer-events:auto;
+}
+#qdDemo .bx.hid{
+  opacity:0;
+  pointer-events:none;
+}
+#qdDemo .bx.drag{
+  cursor:grabbing;
+  transition:none;
+}
+#qdDemo .bx.on:hover{
+  filter:brightness(1.03);
+}
+#qdDemo .bx.slow{
+  transition-duration:.5s,.5s;
+}
+#qdDemo .bx-exp{
+  transform:none;
+  cursor:default;
+  pointer-events:none;
+  opacity:0;
+  clip-path:inset(0 100% 0 0);
+  transition:opacity .18s ease,clip-path .26s cubic-bezier(.22,.9,.28,1);
+}
+#qdDemo .bx-exp.down{
+  clip-path:inset(0 0 100% 0);
+}
+#qdDemo .bx-exp.on{
+  opacity:1;
+  transform:none;
+  pointer-events:none;
+  clip-path:inset(0 0 0 0);
+}
+#qdDemo .bx-exp.on:hover{
+  filter:none;
+}
+#qdDemo .btip{
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:74;
+  max-width:600px;
+  padding:15px 22px 16px;
+  border-radius:15px;
+  background:rgba(17,25,35,.94);
+  color:#fff;
+  box-shadow:0 16px 38px rgba(6,12,20,.46),inset 0 0 0 1px rgba(255,255,255,.13);
+  opacity:0;
+  transform:translateY(7px);
+  transition:opacity .17s ease,transform .17s ease;
+  pointer-events:none;
+}
+#qdDemo .btip.on{
+  opacity:1;
+  transform:translateY(0);
+}
+#qdDemo .btip b{
+  display:block;
+  font-size:29px;
+  font-weight:700;
+  letter-spacing:.4px;
+  margin-bottom:5px;
+}
+#qdDemo .btip i{
+  display:block;
+  font-style:normal;
+  font-size:26px;
+  line-height:1.55;
+  color:#c8d4e4;
+}
+#qdDemo .l-flyout{
+  left:789px;
+  top:89px;
+  width:310px;
+  height:242px;
+  z-index:34;
+  opacity:0;
+  transform:translateY(-10px) scale(.97);
+  transform-origin:50% 0;
+  transition:opacity .26s ease,transform .26s cubic-bezier(.22,.9,.28,1);
+}
+#qdDemo .l-flyout.on{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+#qdDemo .l-mappanel{
+  left:89px;
+  top:1px;
+  width:448px;
+  height:1365px;
+  z-index:41;
+  clip-path:inset(0 100% 0 0);
+  opacity:.35;
+  transition:clip-path .32s cubic-bezier(.22,.9,.28,1),opacity .26s ease;
+}
+#qdDemo .l-mappanel.on{
+  clip-path:inset(0 0 0 0);
+  opacity:1;
+}
+#qdDemo .l-bfly{
+  left:2065px;
+  top:42px;
+  width:71px;
+  height:62px;
+  z-index:11;
+  transition:transform .22s ease,filter .22s ease,opacity .3s ease;
+  transform-origin:50% 50%;
+}
+#qdDemo .l-bfly.off{
+  opacity:0;
+}
+#qdDemo .bfly-hit.off{
+  pointer-events:none;
+}
+#qdDemo .l-bfly.hot{
+  transform:scale(1.14);
+  filter:drop-shadow(0 0 14px rgba(255,214,168,.9));
+}
+#qdDemo .bfly-hit{
+  position:absolute;
+  left:2055px;
+  top:33px;
+  width:91px;
+  height:80px;
+  border:0;
+  padding:0;
+  background:transparent;
+  cursor:pointer;
+  z-index:11;
+  border-radius:50%;
+}
+/* 提示气泡：贴在蝴蝶左侧、垂直居中。视觉参数与盒子气泡 .tip 完全一致，仅位置与朝向不同 */
+#qdDemo .bfly-tip{
+  position:absolute;
+  right:115px;
+  top:73px;
+  z-index:80;
+  font-size:26px;
+  letter-spacing:.5px;
+  white-space:nowrap;
+  background:rgba(15,22,34,.82);
+  color:#fff;
+  padding:16px 34px;
+  border-radius:999px;
+  opacity:0;
+  transform:translateY(-50%);
+  transition:opacity .4s ease;
+  pointer-events:none;
+}
+#qdDemo .bfly-tip::after{
+  content:"";
+  position:absolute;
+  right:-7px;
+  top:50%;
+  transform:translateY(-50%);
+  border-left:8px solid rgba(15,22,34,.82);
+  border-top:7px solid transparent;
+  border-bottom:7px solid transparent;
+}
+#qdDemo .bfly-tip.on{
+  opacity:1;
+}
+#qdDemo .l-settings{
+  left:144px;
+  top:214px;
+  width:1348px;
+  height:939px;
+  z-index:60;
+  opacity:0;
+  transform:scale(.97);
+  transform-origin:50% 50%;
+  pointer-events:none;
+  transition:opacity .24s ease,transform .24s cubic-bezier(.22,.9,.28,1);
+  filter:drop-shadow(0 26px 60px rgba(8,14,24,.42));
+}
+#qdDemo .l-settings.on{
+  opacity:1;
+  transform:scale(1);
+  pointer-events:auto;
+}
+#qdDemo .l-settings>img{
+  display:block;
+  width:100%;
+  height:100%;
+}
+#qdDemo .win-close{
+  position:absolute;
+  right:10px;
+  top:10px;
+  width:60px;
+  height:38px;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  border-radius:8px;
+  display:none;
+}
+#qdDemo .l-settings.on .win-close{
+  display:block;
+}
+#qdDemo .win-close:hover{
+  background:rgba(200,60,60,.16);
+}
+#qdDemo .tip{
+  position:absolute;
+  left:50%;
+  bottom:26px;
+  transform:translateX(-50%);
+  z-index:80;
+  background:rgba(15,22,34,.82);
+  color:#fff;
+  font-size:26px;
+  padding:16px 34px;
+  border-radius:999px;
+  opacity:0;
+  transition:opacity .4s ease;
+  pointer-events:none;
+  white-space:nowrap;
+  letter-spacing:.5px;
+}
+#qdDemo .tip.on{
+  opacity:1;
+}
+#qdDemo .panel{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+#qdDemo .p-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:16px 18px;
+  box-shadow:var(--shadow);
+}
+#qdDemo .p-card h3{
+  font-size:13.5px;
+  font-weight:800;
+  color:var(--navy);
+  margin:0 0 3px;
+}
+#qdDemo .p-card .desc{
+  font-size:11.5px;
+  color:var(--slate);
+  margin:0 0 12px;
+  line-height:1.6;
+}
+#qdDemo .op-btn{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  width:100%;
+  margin-bottom:8px;
+  font-size:12px;
+  font-weight:600;
+  color:var(--navy);
+  background:var(--bg-soft);
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:9px 13px;
+  cursor:pointer;
+  font-family:inherit;
+}
+#qdDemo .op-btn:last-child{
+  margin-bottom:0;
+}
+#qdDemo .op-btn:hover{
+  border-color:var(--navy);
+  background:#fff;
+}
+#qdDemo .op-btn.on{
+  background:var(--navy);
+  border-color:transparent;
+  color:#fff;
+}
+#qdDemo .op-btn.on:hover{
+  background:#22354a;
+}
+#qdDemo .op-btn span{
+  font-size:10.5px;
+  font-weight:500;
+  opacity:.72;
+}
+#qdDemo .p-guide{
+  list-style:none;
+  margin:0;
+  padding:14px 15px;
+  display:flex;
+  flex-direction:column;
+  gap:13px;
+  background:linear-gradient(180deg,#fffaf0,#fff4e0);
+  border:1px solid #f0dbb4;
+  border-left:4px solid var(--gold);
+  border-radius:14px;
+  box-shadow:0 2px 10px rgba(184,121,26,.07);
+}
+#qdDemo .p-guide li{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:4px;
+  font-size:12.5px;
+  line-height:1.5;
+  color:#3a4553;
+}
+#qdDemo .p-guide em{
+  font-style:normal;
+  font-weight:800;
+  font-size:12.5px;
+  color:var(--gold);
+  background:#fff;
+  border:1px solid #efd9af;
+  border-radius:6px;
+  padding:2px 8px;
+  box-shadow:0 1px 0 rgba(184,121,26,.08);
+  white-space:nowrap;
+}
