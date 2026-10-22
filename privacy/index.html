@@ -109,7 +109,7 @@
         <p>None. Our pages store nothing in cookies, <code>localStorage</code> or <code>sessionStorage</code>. The live demo is a self-contained animation that records no events.</p>
 
         <h3>3.3 Cloudflare Web Analytics</h3>
-        <p>The site is served by Cloudflare Pages, which adds a cookieless analytics beacon to every page. It measures aggregate page views, referrers, country and device type. Cloudflare states that Web Analytics uses no cookies, does not fingerprint visitors and does not track you across other sites, so it cannot single you out.</p>
+        <p>The site is served by Cloudflare Workers (static asset hosting), which adds a cookieless analytics beacon to every page. It measures aggregate page views, referrers, country and device type. Cloudflare states that Web Analytics uses no cookies, does not fingerprint visitors and does not track you across other sites, so it cannot single you out.</p>
 
         <h3>3.4 Contact pages: the Tencent chat widget</h3>
         <p>Our two contact pages load an online-consultation widget from Tencent Cloud (<code>trtc.io</code>). This is the only part of the site that does more than count page views. While loaded, it may:</p>
@@ -127,7 +127,7 @@
         <table>
           <thead><tr><th>Service</th><th>What it does</th><th>Provider</th></tr></thead>
           <tbody>
-            <tr><td>Cloudflare Pages &amp; Web Analytics</td><td>Hosting; cookieless visit counts on every page</td><td>Cloudflare, Inc. &mdash; <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">policy</a></td></tr>
+            <tr><td>Cloudflare Workers &amp; Web Analytics</td><td>Hosting; cookieless visit counts on every page</td><td>Cloudflare, Inc. &mdash; <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">policy</a></td></tr>
             <tr><td>Online-consultation widget (knocket-sdk)</td><td>Live chat, loaded on the contact pages only</td><td>Tencent Cloud &mdash; <a href="https://www.tencent.com/en-us/privacy-policy.html" target="_blank" rel="noopener">policy</a></td></tr>
           </tbody>
         </table>
