@@ -15,7 +15,10 @@
 | `site.css` | **主站共用样式**：导航、区块、卡片、VIP 表、页脚、联系页、隐私页，六页共用一份 |
 | `demo.css` / `demo.js` | 交互演示（作用域 `#qdDemo`）的样式与脚本，两页共用一份 |
 | `demo-assets/` | 演示素材：壁纸、界面图、盒子图（全部 WebP），分享卡 `og-en.jpg`（英）/ `og.jpg`（中） |
-| `_headers` | Cloudflare Pages 响应头：素材长缓存、HTML 每次重验证 |
+| `_headers` | Cloudflare Workers 静态资产响应头：素材长缓存、HTML 每次重验证 |
+| `worker.js` | **唯一接口** `GET /api/version?v=<版本>&ch=<渠道>`（桌面程序检查更新用）：由 `wrangler.json` 的 `run_worker_first:["/api/*"]` 送入，其余路径直接走静态资产 |
+| `wrangler.json` | Cloudflare 部署配置：Worker 入口 + 静态资产目录 + 404 处理；**本项目是 Worker + 静态资产，不是 Pages**，所以没有 `functions/` 目录路由 |
+| `db/schema.sql` | D1 计数表 `ping(day, version, channel, n)` 的建表脚本，只在控制台手工执行一次 |
 
 ## 尺寸基准（重要）
 
@@ -52,11 +55,14 @@ python -m http.server 8000
 
 ## 部署
 
-推送到 `main` 分支后由 Cloudflare Pages 自动构建发布：
+推送到 `main` 分支后由 **Cloudflare Workers Builds** 自动构建发布（静态资产 + `worker.js` 一个 Worker）。
 
-- Framework preset：`None`
-- Build command：留空
-- Build output directory：`/`
+- 构建入口：仓库根目录的 `wrangler.json`（`assets.directory = "."`，即整个仓库就是静态目录）
+- `assets.run_worker_first: ["/api/*"]`：只有 `/api/*` 进 Worker，其余路径直接由静态资产响应
+- `assets.not_found_handling: "404-page"`：未命中时返回 404（仓库里没有 `404.html`，所以用 Cloudflare 默认 404 页）
+- Dashboard 侧无需再配 Build command / 输出目录，全部由 `wrangler.json` 决定
+
+改 `LATEST`（`worker.js` 顶部常量）后 push 即生效，约 30 秒全球同步。
 
 ## 素材规范
 

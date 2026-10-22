@@ -1,6 +1,6 @@
 -- qd 更新检查计数表（Cloudflare D1）
 -- 用法：Cloudflare 控制台 → Workers & Pages → D1 → 选库 → Console，粘贴执行一次即可。
--- ⚠️ 本文件只作留档，不会被访问（functions/ 目录不参与静态托管）。
+-- ⚠️ 本文件只作留档，不会被访问（db/ 目录不参与静态托管，也不被 worker.js 引用）。
 
 CREATE TABLE IF NOT EXISTS ping (
   day     TEXT    NOT NULL,   -- UTC 日期 YYYY-MM-DD

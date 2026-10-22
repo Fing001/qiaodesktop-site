@@ -109,7 +109,7 @@
         <p>没有。我们的页面不在 Cookie、<code>localStorage</code> 或 <code>sessionStorage</code> 中写入任何内容。在线演示是一段自包含的动画，不记录任何事件。</p>
 
         <h3>3.3 Cloudflare Web Analytics</h3>
-        <p>本站托管在 Cloudflare Pages，它会在每个页面附加一个不含 Cookie 的统计信标，用于汇总页面浏览量、来源、国家与设备类型。Cloudflare 声明该服务不使用 Cookie、不做访客指纹识别、不跨站追踪，因此无法把您识别为某个具体个人。</p>
+        <p>本站托管在 Cloudflare Workers（静态资产托管），它会在每个页面附加一个不含 Cookie 的统计信标，用于汇总页面浏览量、来源、国家与设备类型。Cloudflare 声明该服务不使用 Cookie、不做访客指纹识别、不跨站追踪，因此无法把您识别为某个具体个人。</p>
 
         <h3>3.4 联系页：腾讯在线咨询组件</h3>
         <p>我们的两个联系页会从腾讯云加载在线咨询组件（<code>trtc.io</code>）。这是全站唯一超出&ldquo;统计浏览量&rdquo;范围的部分。加载期间，它可能会：</p>
@@ -127,7 +127,7 @@
         <table>
           <thead><tr><th>服务</th><th>作用</th><th>提供方</th></tr></thead>
           <tbody>
-            <tr><td>Cloudflare Pages 与 Web Analytics</td><td>站点托管；每个页面上的无 Cookie 访问统计</td><td>Cloudflare, Inc. &mdash; <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">隐私政策</a></td></tr>
+            <tr><td>Cloudflare Workers 与 Web Analytics</td><td>站点托管；每个页面上的无 Cookie 访问统计</td><td>Cloudflare, Inc. &mdash; <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">隐私政策</a></td></tr>
             <tr><td>在线咨询组件（knocket-sdk）</td><td>在线客服，仅在联系页加载</td><td>腾讯云 &mdash; <a href="https://www.tencent.com/zh-cn/privacy-policy.html" target="_blank" rel="noopener">隐私政策</a></td></tr>
           </tbody>
         </table>
