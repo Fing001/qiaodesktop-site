@@ -156,6 +156,8 @@ footer{background:var(--bg-deep);color:#9fb0c3;padding:32px 0;margin-top:67.2px;
   font-size:10px;line-height:1.75;color:#7e8fa3}
 .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12.8px}
 .foot-inner .brand{color:#fff}
+.foot-inner>div a{color:#cbd6e2;text-decoration:underline;text-underline-offset:2px}
+.foot-inner>div a:hover{color:#fff}
 
 @media(max-width:720px){
   .features{grid-template-columns:1fr 1fr}
@@ -205,4 +207,39 @@ footer{background:var(--bg-deep);color:#9fb0c3;padding:32px 0;margin-top:67.2px;
 @media(max-width:480px){
   #contact .sec-head h1{font-size:20.8px}
   .contact-card{padding:19.2px}
+}
+
+/* ===== 隐私政策页（privacy/index.html、zh/privacy/index.html 专用） ===== */
+#privacy{padding:73.6px 0 48px}
+#privacy .sec-head{max-width:720px}
+#privacy .sec-head h1{font-size:27.2px;font-weight:820;margin:8px 0 9.6px;letter-spacing:-0.3px}
+.legal{max-width:640px;margin:0 auto;background:#fff;border:0.8px solid var(--line);
+  border-radius:var(--radius);padding:25.6px;box-shadow:var(--shadow)}
+.legal-meta{font-size:10.4px;color:#8b94a3;margin:0 0 14.4px}
+.legal-summary{background:var(--bg-soft);border:0.8px solid var(--line);border-radius:9.6px;
+  padding:12.8px 14.4px;margin:0 0 19.2px}
+.legal-summary p{margin:0 0 6.4px;font-size:11.6px}
+.legal-summary p:last-child{margin-bottom:0}
+.legal h2{font-size:13.6px;margin:22.4px 0 8px;color:var(--ink);letter-spacing:-0.1px}
+.legal h2:first-of-type{margin-top:0}
+.legal h3{font-size:11.6px;margin:14.4px 0 6.4px;color:var(--ink)}
+.legal p,.legal li{color:var(--slate);font-size:11.6px;line-height:1.7}
+.legal p{margin:0 0 9.6px}
+.legal ul{padding-left:16px;margin:0 0 9.6px}
+.legal li{margin-bottom:4.8px}
+.legal a{color:var(--navy);text-decoration:underline;text-underline-offset:2px}
+.legal code{font-family:ui-monospace,Consolas,"Courier New",monospace;font-size:10.4px;
+  background:var(--bg-soft);border:0.8px solid var(--line);border-radius:4px;
+  padding:0.8px 3.2px;color:var(--navy);word-break:break-all}
+.legal table{width:100%;border-collapse:collapse;font-size:10.4px;margin:0 0 12px}
+.legal th,.legal td{text-align:left;padding:6.4px 8px;border-bottom:0.8px solid var(--line);
+  color:var(--slate);vertical-align:top;line-height:1.6}
+.legal th{color:var(--ink);font-weight:700}
+.legal tr:last-child td{border-bottom:0}
+.legal td a{white-space:nowrap}
+@media(max-width:480px){
+  #privacy .sec-head h1{font-size:20.8px}
+  .legal{padding:19.2px}
+  .legal table{font-size:9.6px}
+  .legal th,.legal td{padding:4.8px 4.8px}
 }

@@ -10,7 +10,9 @@
 | `zh/index.html` | **中文首页**：`/zh/`，内容与英文版一一对应，仅文案与 meta 不同 |
 | `contact/index.html` | **英文联系 / 反馈页**：`/contact/`，含 `contact@qiaodesktop.com` 邮箱入口，本页加载腾讯在线咨询挂件 |
 | `zh/contact/index.html` | **中文联系 / 反馈页**：`/zh/contact/`，邮箱入口同上 |
-| `site.css` | **主站共用样式**：导航、区块、卡片、VIP 表、页脚、联系页，四页共用一份 |
+| `privacy/index.html` | **英文隐私政策**：`/privacy/`，覆盖桌面程序与本站；**不加载任何第三方脚本** |
+| `zh/privacy/index.html` | **中文隐私政策**：`/zh/privacy/`，与英文版结构一一对应 |
+| `site.css` | **主站共用样式**：导航、区块、卡片、VIP 表、页脚、联系页、隐私页，六页共用一份 |
 | `demo.css` / `demo.js` | 交互演示（作用域 `#qdDemo`）的样式与脚本，两页共用一份 |
 | `demo-assets/` | 演示素材：壁纸、界面图、盒子图（全部 WebP），分享卡 `og-en.jpg`（英）/ `og.jpg`（中） |
 | `_headers` | Cloudflare Pages 响应头：素材长缓存、HTML 每次重验证 |
@@ -30,7 +32,7 @@
 
 - **默认英文**：根路径就是英文页，爬虫与社交抓取拿到的都是英文 meta。
 - **中文在 `/zh/`**：两页互相 `hreflang`（`en` / `zh-Hans` / `x-default=英文`），各自 canonical 指向自己。
-  联系页同理：`/contact/` ↔ `/zh/contact/`。
+  联系页同理：`/contact/` ↔ `/zh/contact/`；隐私页同理：`/privacy/` ↔ `/zh/privacy/`。
 - **语言切换**：导航右侧 `EN | 中文` 胶囊，纯链接跳转、不刷新不记 cookie。
   之所以写死 `index.html` 而不是目录形式，是为了双击本地文件时也能跳转。
 - **演示模块的双语**：`demo.js` 读 `<html lang>` 决定文案（盒子气泡、壁纸档位名、按钮开关文案），

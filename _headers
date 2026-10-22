@@ -25,3 +25,9 @@
 
 /zh/contact/*
   Cache-Control: public, max-age=0, must-revalidate
+
+/privacy/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/zh/privacy/*
+  Cache-Control: public, max-age=0, must-revalidate
