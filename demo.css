@@ -6,21 +6,21 @@
 #qdDemo{
   --gold:#B8791A;--navy:#304156;--navy-2:#263345;--green:#2E7D5B;
   --ink:#1f2733;--slate:#5b6573;--line:#e6e9ef;--bg:#ffffff;--bg-soft:#f6f8fb;
-  --shadow:0 2px 10px rgba(20,30,45,.06);
+  --shadow:0 1.6px 8px rgba(20,30,45,.06);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;
-  font-size:16px;line-height:1.5;color:var(--ink);-webkit-font-smoothing:antialiased;
+  font-size:12.8px;line-height:1.5;color:var(--ink);-webkit-font-smoothing:antialiased;
 }
 #qdDemo a{color:inherit;text-decoration:none}
 
 #qdDemo .d-wrap{
-  max-width:1440px;
+  max-width:1152px;
   margin:0 auto;
   display:grid;
-  grid-template-columns:minmax(0,1fr) 292px;
-  gap:20px;
+  grid-template-columns:minmax(0,1fr) 233.6px;
+  gap:16px;
   align-items:start;
 }
-@media(max-width:980px){
+@media(max-width:784px){
   #qdDemo .d-wrap{
     grid-template-columns:1fr;
   }
@@ -34,78 +34,78 @@
 #qdDemo .monitor-body{
   position:relative;
   width:100%;
-  padding:14px 14px 0;
-  border-radius:18px;
+  padding:11.2px 11.2px 0;
+  border-radius:14.4px;
   background:linear-gradient(158deg,#3d4a5a 0%,#28313d 38%,#151b23 100%);
-  box-shadow:0 34px 66px rgba(12,18,26,.32),inset 0 2px 0 rgba(255,255,255,.11),
-      inset 0 -2px 0 rgba(0,0,0,.55),0 0 0 1px rgba(10,16,24,.55);
+  box-shadow:0 27.2px 52.8px rgba(12,18,26,.32),inset 0 1.6px 0 rgba(255,255,255,.11),
+      inset 0 -1.6px 0 rgba(0,0,0,.55),0 0 0 0.8px rgba(10,16,24,.55);
 }
 #qdDemo .chin{
-  height:34px;
+  height:27.2px;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:9px;
+  gap:7.2px;
   color:#7c8a9b;
-  font-size:10px;
+  font-size:8px;
   font-weight:700;
   line-height:1;
-  letter-spacing:2.3px;
+  letter-spacing:1.8px;
   text-transform:uppercase;
 }
 #qdDemo .chin .led{
-  width:7px;
-  height:7px;
+  width:5.6px;
+  height:5.6px;
   border-radius:50%;
   background:#4ade9a;
-  box-shadow:0 0 9px rgba(74,222,154,.95),inset 0 0 2px rgba(255,255,255,.9);
+  box-shadow:0 0 7.2px rgba(74,222,154,.95),inset 0 0 1.6px rgba(255,255,255,.9);
 }
 #qdDemo .stand-neck{
-  width:118px;
-  height:32px;
+  width:94.4px;
+  height:25.6px;
   background:linear-gradient(180deg,#39434f,#1a2029);
   clip-path:polygon(17% 0,83% 0,100% 100%,0 100%);
 }
 #qdDemo .stand-base{
-  width:252px;
-  height:16px;
+  width:201.6px;
+  height:12.8px;
   border-radius:50% 50% 46% 46%/78% 78% 32% 32%;
   background:linear-gradient(180deg,#3b4552,#151b22);
-  box-shadow:0 22px 34px rgba(12,18,26,.30);
+  box-shadow:0 17.6px 27.2px rgba(12,18,26,.30);
 }
-@media(max-width:760px){
+@media(max-width:608px){
   #qdDemo .monitor-body{
-    padding:9px 9px 0;
-    border-radius:14px;
+    padding:7.2px 7.2px 0;
+    border-radius:11.2px;
   }
   #qdDemo .chin{
-    height:24px;
-    font-size:8.5px;
-    letter-spacing:1.6px;
-    gap:7px;
+    height:19.2px;
+    font-size:6.8px;
+    letter-spacing:1.3px;
+    gap:5.6px;
   }
   #qdDemo .chin .led{
-    width:5px;
-    height:5px;
+    width:4px;
+    height:4px;
   }
   #qdDemo .stand-neck{
-    width:84px;
-    height:22px;
+    width:67.2px;
+    height:17.6px;
   }
   #qdDemo .stand-base{
-    width:168px;
-    height:12px;
+    width:134.4px;
+    height:9.6px;
   }
 }
 #qdDemo .screen-wrap{
   position:relative;
   width:100%;
   aspect-ratio:2158/1366;
-  border-radius:4px;
+  border-radius:3.2px;
   overflow:hidden;
   background:#0f1622;
   user-select:none;
-  box-shadow:inset 0 0 0 1px rgba(0,0,0,.6);
+  box-shadow:inset 0 0 0 0.8px rgba(0,0,0,.6);
 }
 #qdDemo .stage{
   position:absolute;
@@ -147,7 +147,7 @@
 }
 /* 常态扁平贴边；只有“呼出演示”浮在窗口之上时才加投影区分层次 */
 #qdDemo .l-topbar.lift{
-  filter:drop-shadow(0 16px 24px rgba(8,14,24,.20));
+  filter:drop-shadow(0 12.8px 19.2px rgba(8,14,24,.20));
 }
 #qdDemo .l-sidebar{
   left:0;
@@ -163,7 +163,7 @@
 }
 /* 常态扁平贴边；只有“呼出演示”浮在窗口之上时才加投影区分层次 */
 #qdDemo .l-sidebar.lift{
-  filter:drop-shadow(16px 0 24px rgba(8,14,24,.20));
+  filter:drop-shadow(12.8px 0 19.2px rgba(8,14,24,.20));
 }
 #qdDemo .bx{
   position:absolute;
@@ -295,7 +295,7 @@
 }
 #qdDemo .l-bfly.hot{
   transform:scale(1.14);
-  filter:drop-shadow(0 0 14px rgba(255,214,168,.9));
+  filter:drop-shadow(0 0 11.2px rgba(255,214,168,.9));
 }
 #qdDemo .bfly-hit{
   position:absolute;
@@ -405,41 +405,41 @@
 #qdDemo .panel{
   display:flex;
   flex-direction:column;
-  gap:16px;
+  gap:12.8px;
 }
 #qdDemo .p-card{
   background:#fff;
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:16px 18px;
+  border:0.8px solid var(--line);
+  border-radius:11.2px;
+  padding:12.8px 14.4px;
   box-shadow:var(--shadow);
 }
 #qdDemo .p-card h3{
-  font-size:13.5px;
+  font-size:10.8px;
   font-weight:800;
   color:var(--navy);
-  margin:0 0 3px;
+  margin:0 0 2.4px;
 }
 #qdDemo .p-card .desc{
-  font-size:11.5px;
+  font-size:9.2px;
   color:var(--slate);
-  margin:0 0 12px;
+  margin:0 0 9.6px;
   line-height:1.6;
 }
 #qdDemo .op-btn{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:8px;
+  gap:6.4px;
   width:100%;
-  margin-bottom:8px;
-  font-size:12px;
+  margin-bottom:6.4px;
+  font-size:9.6px;
   font-weight:600;
   color:var(--navy);
   background:var(--bg-soft);
-  border:1px solid var(--line);
-  border-radius:9px;
-  padding:9px 13px;
+  border:0.8px solid var(--line);
+  border-radius:7.2px;
+  padding:7.2px 10.4px;
   cursor:pointer;
   font-family:inherit;
 }
@@ -459,41 +459,41 @@
   background:#22354a;
 }
 #qdDemo .op-btn span{
-  font-size:10.5px;
+  font-size:8.4px;
   font-weight:500;
   opacity:.72;
 }
 #qdDemo .p-guide{
   list-style:none;
   margin:0;
-  padding:14px 15px;
+  padding:11.2px 12px;
   display:flex;
   flex-direction:column;
-  gap:13px;
+  gap:10.4px;
   background:linear-gradient(180deg,#fffaf0,#fff4e0);
-  border:1px solid #f0dbb4;
-  border-left:4px solid var(--gold);
-  border-radius:14px;
-  box-shadow:0 2px 10px rgba(184,121,26,.07);
+  border:0.8px solid #f0dbb4;
+  border-left:3.2px solid var(--gold);
+  border-radius:11.2px;
+  box-shadow:0 1.6px 8px rgba(184,121,26,.07);
 }
 #qdDemo .p-guide li{
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  gap:4px;
-  font-size:12.5px;
+  gap:3.2px;
+  font-size:10px;
   line-height:1.5;
   color:#3a4553;
 }
 #qdDemo .p-guide em{
   font-style:normal;
   font-weight:800;
-  font-size:12.5px;
+  font-size:10px;
   color:var(--gold);
   background:#fff;
-  border:1px solid #efd9af;
-  border-radius:6px;
-  padding:2px 8px;
-  box-shadow:0 1px 0 rgba(184,121,26,.08);
+  border:0.8px solid #efd9af;
+  border-radius:4.8px;
+  padding:1.6px 6.4px;
+  box-shadow:0 0.8px 0 rgba(184,121,26,.08);
   white-space:nowrap;
 }

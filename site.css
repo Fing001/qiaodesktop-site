@@ -1,0 +1,208 @@
+/* ==========================================================================
+ 巧桌面官网 · 主站样式（index.html / zh/index.html / contact/ 共用）
+ 尺寸基准：全部 px 数值与断点均 ×0.8（原设计在 1440 视口 @ 80% 缩放下定稿）。
+ 语言相关的微调（如 .dim .opt .tag 列宽）不在此处，见各页 <style> 覆盖。
+ ========================================================================== */
+
+:root{
+  --navy:#304156;        /* 侧栏深蓝（取自 qd 设置中心） */
+  --navy-2:#263345;
+  --gold:#FFC000;        /* 强调金 */
+  --green:#2E7D5B;       /* 选中绿 */
+  --ink:#1f2733;
+  --slate:#5b6573;
+  --line:#e6e9ef;
+  --bg:#ffffff;
+  --bg-soft:#f6f8fb;
+  --bg-deep:#0f1622;
+  --radius:12.8px;
+  --shadow:0 8px 24px rgba(16,22,34,.08);
+  --shadow-lg:0 19.2px 48px rgba(16,22,34,.16);
+  --maxw:912px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--gold);color:#1a1300}
+:focus-visible{outline:1.6px solid var(--gold);outline-offset:1.6px;border-radius:4.8px}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-thumb{background:#c9d2de;border:2.4px solid transparent;border-radius:799.2px;background-clip:content-box}
+::-webkit-scrollbar-thumb:hover{background:#aeb9ca;border:2.4px solid transparent;background-clip:content-box}
+::-webkit-scrollbar-track{background:transparent}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 19.2px}
+.btn{
+  display:inline-flex;align-items:center;gap:6.4px;font-weight:600;font-size:12px;
+  padding:9.6px 17.6px;border-radius:799.2px;border:0.8px solid transparent;cursor:pointer;
+}
+.btn-primary{background:var(--gold);color:#1a1300}
+.btn-primary:hover{background:#E8AE00}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+/* ===== Nav ===== */
+header.nav{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(9.6px);
+  border-bottom:0.8px solid var(--line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:51.2px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:15.2px;letter-spacing:0.4px}
+.brand .mark{width:24px;height:24px;display:block;flex:none}
+.nav-links{display:flex;gap:22.4px;font-size:12px;color:var(--slate);font-weight:500}
+.nav-links a:hover{color:var(--navy)}
+.nav-cta{display:flex;align-items:center;gap:9.6px}
+.menu-btn{display:none;background:none;border:0;font-size:20.8px;cursor:pointer;color:var(--navy)}
+
+/* Language switch: EN / 中文 segmented pill */
+.lang-sw{display:inline-flex;align-items:center;border:0.8px solid var(--line);border-radius:799.2px;padding:1.6px;font-size:10.4px;font-weight:700;color:var(--slate);background:#fff}
+.lang-sw a,.lang-sw .on{padding:3.2px 8px;border-radius:799.2px;line-height:1.5}
+.lang-sw .on{background:var(--navy);color:#fff}
+.lang-sw a:hover{color:var(--navy)}
+
+/* 按钮排（下载区 CTA 使用） */
+.act-row{display:flex;gap:11.2px;margin-top:22.4px;flex-wrap:wrap}
+
+
+/* ===== Sections ===== */
+section{padding:67.2px 0}
+.sec-head{text-align:center;max-width:576px;margin:0 auto 38.4px}
+.sec-head .kicker{color:var(--gold);font-weight:800;letter-spacing:1.6px;font-size:10.4px;text-transform:uppercase}
+.sec-head h2{font-size:27.2px;font-weight:820;margin:8px 0 9.6px;letter-spacing:-0.3px}
+.sec-head p{color:var(--slate);font-size:12.8px}
+/* 浮沉区描述与功能区标题要单行显示：默认 576px 容器会折行，这两处放宽到 720px */
+#float .sec-head,
+#features .sec-head{max-width:720px}
+
+/* ===== 交互演示模块（模块内样式见 demo.css，作用域 #qdDemo） ===== */
+/* 全站唯一 h1：页面第一屏主标题（视觉与原有 h2 一致） */
+#demo{background:linear-gradient(180deg,#f8fafc,#eef2f7);scroll-margin-top:59.2px;padding:16px 0 25.6px}
+#demo .sec-head{margin-bottom:11.2px;max-width:688px}
+#demo .sec-head h1{font-size:27.2px;font-weight:820;letter-spacing:-0.3px;margin:1.6px 0 4.8px;line-height:1.28}
+/* 标题第二行：下载邀约，比标题小两档、灰色，规格词加粗提深色 */
+#demo .sec-head h1 .sub-line{font-size:13.6px;font-weight:500;color:var(--slate);letter-spacing:0}
+#demo .sec-head h1 .sub-line strong{color:var(--navy);font-weight:700}
+#demo .wrap{max-width:1136px}
+/* 视口高度不够时收起支架与下巴，保证屏幕本体在首屏完整露出 */
+@media(max-height:800px){
+  #demo .stand-neck,#demo .stand-base,#demo .chin{display:none}
+}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:17.6px}
+.card{background:#fff;border:0.8px solid var(--line);border-radius:var(--radius);padding:20.8px}
+.card:hover{box-shadow:var(--shadow)}
+.card .ico{width:36.8px;height:36.8px;border-radius:9.6px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(48,65,86,.1),rgba(46,125,91,.12));margin-bottom:12.8px}
+.card .ico svg{width:19.2px;height:19.2px;display:block}
+.card h3{font-size:14.4px;margin-bottom:6.4px}
+.card p{color:var(--slate);font-size:11.6px}
+
+/* Float/Sink spotlight */
+.spot{background:var(--bg-deep);color:#e8edf4}
+.spot .sec-head h2{color:#fff} .spot .sec-head p{color:#9fb0c3}
+.float-grid{display:grid;grid-template-columns:1fr 1fr;gap:28.8px;align-items:center}
+.dim{background:rgba(255,255,255,.04);border:0.8px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:22.4px}
+.dim h4{font-size:12.8px;color:var(--gold);margin-bottom:12.8px;display:flex;align-items:center;gap:6.4px}
+.dim h4 svg{width:14.4px;height:14.4px;flex:none}
+.dim .opt{display:flex;align-items:center;gap:9.6px;padding:9.6px 0;border-top:0.8px solid rgba(255,255,255,.07)}
+.dim .opt:first-of-type{border-top:0}
+.dim .opt .tag{width:100.8px;flex:none;font-weight:700;font-size:10.4px}
+.dim .opt .desc{color:#aebccd;font-size:10.8px}
+.dim .opt .dotc{width:8px;height:8px;border-radius:50%;flex:none}
+.legend{margin-top:14.4px;font-size:10.4px;color:#9fb0c3}
+
+/* VIP 对比表 */
+.vip{background:linear-gradient(135deg,#fff,#f4f8f5)}
+.vp-scroll{max-width:736px;margin:0 auto;background:#fff;border:0.8px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.vp-table{width:100%;border-collapse:collapse}
+.vp-table th,.vp-table td{padding:10.4px 14.4px;text-align:left;vertical-align:middle}
+.vp-table thead th{font-size:11.2px;font-weight:800;letter-spacing:0.4px;border-bottom:0.8px solid var(--line)}
+.vp-table thead .th-func{color:var(--navy)}
+.vp-table thead .c-free{color:var(--slate)}
+.vp-table thead .c-vip{color:#1a1300;background:linear-gradient(180deg,#FFD24D,#FFC000)}
+.vp-table th.c-free,.vp-table th.c-vip{width:76.8px;text-align:center}
+.vp-table td{font-size:11.6px;border-bottom:0.8px solid var(--line)}
+.vp-table tbody tr:last-child td{border-bottom:0}
+.vp-table tbody tr:hover td{background:#f8fafc}
+.vp-table td.c-free,.vp-table td.c-vip{width:76.8px;text-align:center}
+.vp-table td.c-vip{background:rgba(255,192,0,.05)}
+.vp-table tbody tr:hover td.c-vip{background:rgba(255,192,0,.09)}
+.vp-func b{display:block;font-size:12px;color:var(--ink);font-weight:700}
+.vp-func span{display:block;font-size:10px;color:var(--slate);margin-top:1.6px;line-height:1.5}
+.vp-yes{display:inline-grid;place-items:center;width:17.6px;height:17.6px;border-radius:50%}
+.vp-yes.free{background:rgba(46,125,91,.1)}
+.vp-yes.vip{background:rgba(255,192,0,.18)}
+.vp-yes svg{width:10.4px;height:10.4px}
+.vp-no{color:#b6bfcb;font-size:10.4px}
+.vp-group td{background:var(--bg-soft);font-size:10.4px;font-weight:800;color:var(--navy);
+  letter-spacing:0.4px;padding:7.2px 14.4px;border-bottom:0.8px solid var(--line)}
+.vp-group .g-vip{color:#8a5f00}
+.vp-group .g-cnt{font-weight:600;color:var(--slate);margin-left:4.8px;letter-spacing:0}
+.vp-notes{max-width:736px;margin:14.4px auto 0;font-size:10.8px;color:var(--slate);line-height:1.85}
+.vp-notes b{color:var(--ink)}
+.vp-notes .dot{color:#c9b487;margin:0 5.6px}
+
+/* CTA + Footer */
+.cta{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;text-align:center;border-radius:19.2px;
+  padding:44.8px 19.2px;margin:0 auto;max-width:var(--maxw)}
+.cta h2{font-size:25.6px;font-weight:820;margin-bottom:8px}
+.cta p{color:#c5d0de;margin-bottom:20.8px;font-size:12.8px}
+.cta .act-row{justify-content:center}
+footer{background:var(--bg-deep);color:#9fb0c3;padding:32px 0;margin-top:67.2px;font-size:11.2px}
+.foot-disclaimer{margin-top:11.2px;padding-top:11.2px;border-top:0.8px solid rgba(255,255,255,.08);
+  font-size:10px;line-height:1.75;color:#7e8fa3}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12.8px}
+.foot-inner .brand{color:#fff}
+
+@media(max-width:720px){
+  .features{grid-template-columns:1fr 1fr}
+  .float-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .menu-btn{display:block}
+  .nav-cta{gap:6.4px}
+  .nav-links.show{display:flex;position:absolute;top:51.2px;left:0;right:0;flex-direction:column;
+    background:#fff;padding:14.4px 19.2px;gap:11.2px;border-bottom:0.8px solid var(--line);box-shadow:var(--shadow)}
+}
+@media(max-width:480px){
+  .features{grid-template-columns:1fr}
+  .nav-cta .btn-primary{display:none}
+  .sec-head h2{font-size:20.8px}
+  /* 窄屏：h1 与第二行邀约同步收号，避免折行溢出（h1 为 15 字长句，17.6px 才放得下一行） */
+  #demo .sec-head h1{font-size:17.6px}
+  #demo .sec-head h1 .sub-line{font-size:10.4px}
+  /* 窄屏：对比表收紧单元格，勾选列固定宽度防挤压 */
+  .vp-table th,.vp-table td{padding:8.8px 9.6px}
+  .vp-table th.c-free,.vp-table th.c-vip,.vp-table td.c-free,.vp-table td.c-vip{width:46.4px}
+  .vp-func b{font-size:10.8px}
+  .vp-func span{font-size:9.2px}
+  .vp-group td{padding:6.4px 9.6px;font-size:9.6px}
+}
+
+/* ===== 联系 / 反馈页（contact/index.html、zh/contact/index.html 专用） ===== */
+#contact{padding:73.6px 0 48px}
+#contact .sec-head{max-width:720px}
+#contact .sec-head h1{font-size:27.2px;font-weight:820;margin:8px 0 9.6px;letter-spacing:-0.3px}
+.contact-card{max-width:640px;margin:0 auto;background:#fff;border:0.8px solid var(--line);
+  border-radius:var(--radius);padding:25.6px;box-shadow:var(--shadow)}
+.contact-card h3{font-size:13.6px;margin:0 0 8px}
+.contact-card h3:not(:first-child){margin-top:19.2px}
+.contact-card p{color:var(--slate);font-size:11.6px}
+.contact-card p a{color:var(--navy);text-decoration:underline;text-underline-offset:2px}
+.contact-mail{display:inline-flex;align-items:center;gap:6.4px;margin:0 0 2.4px;
+  padding:8px 13.6px;background:var(--bg-soft);border:0.8px solid var(--line);
+  border-radius:9.6px;font-size:13.6px;font-weight:700;color:var(--navy);
+  transition:background .15s,border-color .15s}
+.contact-mail:hover{background:#fff;border-color:var(--navy)}
+.contact-mail svg{flex:0 0 auto;width:14.4px;height:14.4px}
+.contact-list{padding-left:16px;color:var(--slate);font-size:11.6px;margin:0 0 0 0}
+.contact-list li{margin-bottom:4.8px}
+.contact-tip{margin-top:20.8px;padding:11.2px 14.4px;background:var(--bg-soft);
+  border:0.8px solid var(--line);border-radius:9.6px;color:var(--slate);font-size:11.2px}
+.contact-tip b{color:var(--ink)}
+@media(max-width:480px){
+  #contact .sec-head h1{font-size:20.8px}
+  .contact-card{padding:19.2px}
+}
