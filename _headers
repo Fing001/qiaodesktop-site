@@ -14,5 +14,14 @@
 /demo.js
   Cache-Control: public, max-age=86400
 
+/site.css
+  Cache-Control: public, max-age=86400
+
 /*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/contact/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/zh/contact/*
   Cache-Control: public, max-age=0, must-revalidate
