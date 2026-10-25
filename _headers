@@ -31,3 +31,9 @@
 
 /zh/privacy/*
   Cache-Control: public, max-age=0, must-revalidate
+
+/thanks/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/zh/thanks/*
+  Cache-Control: public, max-age=0, must-revalidate

@@ -145,12 +145,7 @@ section{padding:67.2px 0}
 .vp-notes b{color:var(--ink)}
 .vp-notes .dot{color:#c9b487;margin:0 5.6px}
 
-/* CTA + Footer */
-.cta{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;text-align:center;border-radius:19.2px;
-  padding:44.8px 19.2px;margin:0 auto;max-width:var(--maxw)}
-.cta h2{font-size:25.6px;font-weight:820;margin-bottom:8px}
-.cta p{color:#c5d0de;margin-bottom:20.8px;font-size:12.8px}
-.cta .act-row{justify-content:center}
+/* Footer */
 footer{background:var(--bg-deep);color:#9fb0c3;padding:32px 0;margin-top:67.2px;font-size:11.2px}
 .foot-disclaimer{margin-top:11.2px;padding-top:11.2px;border-top:0.8px solid rgba(255,255,255,.08);
   font-size:10px;line-height:1.75;color:#7e8fa3}
@@ -242,4 +237,104 @@ footer{background:var(--bg-deep);color:#9fb0c3;padding:32px 0;margin-top:67.2px;
   .legal{padding:19.2px}
   .legal table{font-size:9.6px}
   .legal th,.legal td{padding:4.8px 4.8px}
+}
+
+/* ===== GET 板块（免费下载 + PRO 购买 · 2026-10-23 合并为第二板块）===== */
+.get{background:linear-gradient(180deg,#fff,#f4f8f5);scroll-margin-top:59.2px}
+.get-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:19.2px;align-items:stretch}
+.gfree{background:#fff;border:0.8px solid var(--line);border-radius:var(--radius);padding:22.4px;
+  box-shadow:var(--shadow);display:flex;flex-direction:column}
+.gfree-kicker{font-size:9.6px;font-weight:800;letter-spacing:0.6px;text-transform:uppercase;color:var(--green)}
+.gfree h3{font-size:19.2px;font-weight:820;color:var(--navy);margin:4.8px 0 7.2px;letter-spacing:-0.2px}
+.gfree p{font-size:11.2px;color:var(--slate);line-height:1.68;margin:0 0 14.4px}
+.gfree-list{list-style:none;display:grid;gap:7.2px;margin:0 0 17.6px}
+.gfree-list li{position:relative;padding-left:19.2px;font-size:11.2px;color:var(--ink);line-height:1.55}
+.gfree-list li::before{content:"";position:absolute;left:0;top:2.4px;width:12px;height:12px;border-radius:50%;background:rgba(46,125,91,.14)}
+.gfree-list li::after{content:"";position:absolute;left:3.4px;top:6px;width:4.8px;height:2.4px;border-left:1.6px solid var(--green);border-bottom:1.6px solid var(--green);transform:rotate(-45deg)}
+.gfree .btn{margin-top:auto;justify-content:center;font-size:12.8px;padding:11.2px 17.6px}
+.gfree-meta{margin-top:9.6px;font-size:9.6px;color:var(--slate);line-height:1.6;text-align:center}
+@media(max-width:720px){
+  .get-grid{grid-template-columns:1fr}
+}
+
+/* ===== PRO 购买卡（2026-10-23；现位于第二板块 #get 右栏，窄版单列）===== */
+.buy{
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.15fr) minmax(0,1fr);
+  gap:19.2px;align-items:center;
+  margin:24px 0 0;padding:19.2px 21.6px;
+  background:#fff;border:0.8px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.buy-kicker{font-size:9.6px;font-weight:800;letter-spacing:0.6px;text-transform:uppercase;color:var(--green)}
+.buy-price{display:flex;align-items:baseline;gap:5.6px;margin:3.2px 0 4.8px}
+.buy-price b{font-size:27.2px;line-height:1.1;color:var(--navy);letter-spacing:-0.4px}
+.buy-price s{font-size:12.8px;color:#9aa5b4;text-decoration:line-through;text-decoration-thickness:1.6px}
+.buy-price span{font-size:11.2px;color:var(--slate)}
+.buy-sub{font-size:10.4px;color:var(--slate);line-height:1.6}
+.buy-list{list-style:none;display:grid;gap:6.4px}
+.buy-list li{position:relative;padding-left:19.2px;font-size:11.2px;color:var(--ink);line-height:1.55}
+.buy-list li::before{content:"";position:absolute;left:0;top:2.4px;width:12px;height:12px;border-radius:50%;background:rgba(46,125,91,.14)}
+.buy-list li::after{content:"";position:absolute;left:3.4px;top:6px;width:4.8px;height:2.4px;border-left:1.6px solid var(--green);border-bottom:1.6px solid var(--green);transform:rotate(-45deg)}
+.buy-act{display:grid;gap:6.4px;justify-items:stretch}
+.btn-buy{background:var(--gold);color:#1a1300;justify-content:center;font-size:12.8px;padding:11.2px 17.6px}
+.btn-buy:hover{background:#E8AE00}
+.buy-note{font-size:9.6px;color:var(--slate);line-height:1.6}
+.buy-note b{color:var(--ink)}
+.buy-note a{color:var(--navy);text-decoration:underline;text-underline-offset:2px}
+/* 授权条款（2026-10-23）：买前必须可见 ⇒ 整条横跨三栏底部、弱化但不断开 */
+.buy-policy{grid-column:1/-1;margin-top:-6.4px;padding-top:7.2px;border-top:1px solid rgba(20,40,70,.1);font-size:9.6px;color:var(--slate);line-height:1.65}
+.buy-policy b{color:var(--ink)}
+/* 窄版（#get 右栏）：单列纵向，与左侧免费下载卡等高对齐 */
+.buy--narrow{margin:0;grid-template-columns:1fr;align-items:start;gap:14.4px;padding:22.4px}
+.buy--narrow .buy-policy{margin-top:0}
+@media(max-width:720px){
+  .buy{grid-template-columns:1fr;gap:14.4px;padding:17.6px}
+  .buy-price b{font-size:24px}
+}
+
+/* ===== THANKS 页（付款后说明 · 2026-10-23）===== */
+#thanks{padding:73.6px 0 48px}
+#thanks .sec-head{max-width:720px}
+#thanks .sec-head h1{font-size:27.2px;font-weight:820;margin:8px 0 9.6px;letter-spacing:-0.3px}
+.thanks{max-width:640px;margin:0 auto;background:#fff;border:0.8px solid var(--line);
+  border-radius:var(--radius);padding:25.6px;box-shadow:var(--shadow)}
+.thanks h2{font-size:13.6px;margin:22.4px 0 8px;color:var(--ink);letter-spacing:-0.1px}
+.thanks p{color:var(--slate);font-size:11.6px;line-height:1.7;margin:0 0 9.6px}
+.thanks a{color:var(--navy);text-decoration:underline;text-underline-offset:2px}
+.thanks code{font-family:ui-monospace,Consolas,"Courier New",monospace;font-size:10.4px;
+  background:var(--bg-soft);border:0.8px solid var(--line);border-radius:4px;
+  padding:0.8px 3.2px;color:var(--navy);word-break:break-all}
+.tk-strip{display:flex;gap:10.4px;align-items:flex-start;background:rgba(46,125,91,.07);
+  border:0.8px solid rgba(46,125,91,.22);border-radius:9.6px;padding:11.2px 13.6px;
+  font-size:11.6px;line-height:1.62;color:var(--ink)}
+.tk-strip b{color:var(--green)}
+.tk-badge{flex:0 0 auto;background:var(--green);color:#fff;font-size:9.6px;font-weight:800;
+  letter-spacing:.4px;border-radius:799.2px;padding:2.4px 8px;text-transform:uppercase;margin-top:1.6px}
+.tk-steps{list-style:none;counter-reset:tk;display:grid;gap:11.2px;margin:0;padding:0}
+.tk-steps li{counter-increment:tk;position:relative;padding-left:30.4px;font-size:11.6px;line-height:1.62;color:var(--ink)}
+.tk-steps li::before{content:counter(tk);position:absolute;left:0;top:0;width:19.2px;height:19.2px;
+  border-radius:50%;background:var(--navy);color:#fff;font-size:10.4px;font-weight:800;
+  display:flex;align-items:center;justify-content:center}
+.tk-steps li b{display:block;color:var(--ink)}
+.tk-steps li span{display:block;color:var(--slate);margin-top:1.6px}
+.tk-mail{border:0.8px solid var(--line);border-radius:9.6px;overflow:hidden;margin:0 0 9.6px;background:var(--bg-soft)}
+.tk-mail-head{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:8px 12px;font-size:10.4px;color:var(--slate);border-bottom:0.8px solid var(--line);background:#fff}
+.tk-copy{cursor:pointer;font:inherit;font-size:10.4px;font-weight:700;color:var(--navy);
+  background:#fff;border:0.8px solid var(--line);border-radius:799.2px;padding:3.2px 10.4px}
+.tk-copy:hover{border-color:var(--navy)}
+.tk-mail pre{margin:0;padding:12px 13.6px;font-family:ui-monospace,Consolas,"Courier New",monospace;
+  font-size:10.4px;line-height:1.7;color:var(--navy);white-space:pre-wrap;word-break:break-word}
+.thanks a.tk-btn{color:#1a1300;text-decoration:none;margin:2px 0 4px}
+.tk-faq{margin:0}
+.tk-faq dt{font-size:11.6px;font-weight:700;color:var(--ink);margin:11.2px 0 3.2px}
+.tk-faq dt:first-child{margin-top:0}
+.tk-faq dd{margin:0;font-size:11.6px;color:var(--slate);line-height:1.7}
+.tk-faq a{color:var(--navy);text-decoration:underline;text-underline-offset:2px}
+.tk-foot{margin:22.4px 0 0;padding-top:12px;border-top:0.8px solid var(--line);font-size:10.4px;color:#8b94a3}
+@media(max-width:480px){
+  #thanks{padding:48px 0 32px}
+  #thanks .sec-head h1{font-size:20.8px}
+  .thanks{padding:19.2px}
+  .tk-steps li{font-size:11.2px;padding-left:27.2px}
 }

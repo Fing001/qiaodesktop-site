@@ -2,7 +2,8 @@
 // ════════════════════════════════════════════════════════════════════
 // 用途：桌面程序「检查更新」的唯一端点。
 //   请求：GET /api/version?v=<版本号>&ch=<official|store>
-//   响应：{ latest, url, notes }（200）
+//   响应：{ latest, url, notes, pkg }（200）
+//     pkg = { url, urls, sha256, size } | null（null = 只检查不提供下载，客户端不显示下载按钮）
 //
 // 🔴 隐私边界（与隐私政策 /zh/privacy 的 §2.1 一一对应，改这里必须同步改政策）：
 //   • 只做计数：按 (日期, 版本, 渠道) 累加一行，看不到任何具体用户；
@@ -17,10 +18,24 @@
 //   其余路径根本不进来（由静态资产直接响应）；env.ASSETS 那一行只是兜底。
 // ════════════════════════════════════════════════════════════════════
 
-// 🔴 每次发版只改这三行（改完 git push，Cloudflare 自动重新部署）
-const LATEST = "1.0.44";
+// 🔴 每次发版只改这个常量区（改完 git push，Cloudflare 自动重新部署）
+const LATEST = "1.0.45.3";
 const DOWNLOAD_URL = "https://www.qiaodesktop.com/";
 const NOTES = "";
+
+// 更新包分发（2026-10-24 双源）：同一个包传两处，sha256/size 同一份。
+//   [0] GitHub Releases —— 面向人的发布物料（exe/CHANGELOG/README）就在 GitHub，包同址；
+//   [1] Cloudflare R2    —— 面向机器的下载通道（免费额度内恒零成本，国内期望速度更好）。
+//   客户端对数组随机打乱后串行 fallback ⇒ 负载天然分散 + 一个失败自动换下一个。
+//   ⚠️ 不做按地区/渠道的智能选源：读 CF-IPCountry 违反隐私政策 §2.1（不读任何请求头）。
+//   ⚠️ 留空 = 该源未就绪；全部留空时不下发 pkg（客户端维持"只检查不下载"的旧行为）。
+//   占位说明：URL 填好即开通，无需改客户端。
+const PKG_URLS = [
+  "https://github.com/Fing001/qiaodesktop-releases/releases/download/v1.0.45.3/QiaoDesktop-1.0.45.3.exe.lzma", // GitHub Releases
+  "https://dl.qiaodesktop.com/QiaoDesktop-1.0.45.3.exe.lzma", // Cloudflare R2
+];
+const PKG_SHA256 = "54E9E9C4A519C6A14B58794F77F4E9B9BC10034414E8A4AEF87C5D0BA888CE99"; // 包 sha256（大写十六进制）；空 = 跳过校验（仅调试用，正式发版必填）
+const PKG_SIZE = 1117388;    // 包字节数；0 = 跳过 size 校验
 
 export default {
   async fetch(request, env) {
@@ -61,7 +76,14 @@ export default {
       }
     }
 
-    return json({ latest: LATEST, url: DOWNLOAD_URL, notes: NOTES }, 200);
+    // 更新包：过滤未就绪的源；一个都不剩 ⇒ pkg=null（客户端只检查、不显示下载按钮）
+    const pkgUrls = PKG_URLS.filter((u) => typeof u === "string" && u.length > 0);
+    const pkg =
+      pkgUrls.length > 0
+        ? { url: pkgUrls[0], urls: pkgUrls, sha256: PKG_SHA256, size: PKG_SIZE }
+        : null;
+
+    return json({ latest: LATEST, url: DOWNLOAD_URL, notes: NOTES, pkg }, 200);
   },
 };
 
