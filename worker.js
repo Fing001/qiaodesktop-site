@@ -38,7 +38,7 @@ const PKG_SHA256 = "54E9E9C4A519C6A14B58794F77F4E9B9BC10034414E8A4AEF87C5D0BA888
 const PKG_SIZE = 1117388;    // 包字节数；0 = 跳过 size 校验
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
     // 容忍一个尾斜杠：/api/version 与 /api/version/ 等价
     const path = url.pathname.replace(/\/+$/, "") || "/";
@@ -62,18 +62,18 @@ export default {
     const channel = /^[a-z]{1,16}$/.test(rawCh) ? rawCh : "unknown";
     const day = new Date().toISOString().slice(0, 10); // UTC 日期分桶
 
-    // 计数（尽力而为；失败绝不影响更新检查本身）
+    // 计数（后台执行：waitUntil 保住异步任务，但响应不再等 D1——D1 慢/抖时接口仍是毫秒级；
+    // 实测 2026-10-25：阻塞式 await D1 时接口延迟 2.7~12s 且间歇超时，改后台后恢复）
     if (env.DB) {
-      try {
-        await env.DB.prepare(
+      ctx.waitUntil(
+        env.DB.prepare(
           "INSERT INTO ping (day, version, channel, n) VALUES (?, ?, ?, 1) " +
             "ON CONFLICT(day, version, channel) DO UPDATE SET n = n + 1"
         )
           .bind(day, rawV, channel)
-          .run();
-      } catch (e) {
-        // 静默：宁可丢一次计数，也不能让用户拿不到版本信息
-      }
+          .run()
+          .catch(() => {}) // 静默：宁可丢一次计数，也不能让用户拿不到版本信息
+      );
     }
 
     // 更新包：过滤未就绪的源；一个都不剩 ⇒ pkg=null（客户端只检查、不显示下载按钮）
