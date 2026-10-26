@@ -19,7 +19,7 @@
 // ════════════════════════════════════════════════════════════════════
 
 // 🔴 每次发版只改这个常量区（改完 git push，Cloudflare 自动重新部署）
-const LATEST = "1.0.45.3";
+const LATEST = "1.0.45.9";
 const DOWNLOAD_URL = "https://www.qiaodesktop.com/";
 const NOTES = "";
 
@@ -31,11 +31,11 @@ const NOTES = "";
 //   ⚠️ 留空 = 该源未就绪；全部留空时不下发 pkg（客户端维持"只检查不下载"的旧行为）。
 //   占位说明：URL 填好即开通，无需改客户端。
 const PKG_URLS = [
-  "https://github.com/Fing001/qiaodesktop-releases/releases/download/v1.0.45.3/QiaoDesktop-1.0.45.3.exe.lzma", // GitHub Releases
-  "https://dl.qiaodesktop.com/QiaoDesktop-1.0.45.3.exe.lzma", // Cloudflare R2
+  "https://github.com/Fing001/qiaodesktop-releases/releases/download/v1.0.45.9/QiaoDesktop-1.0.45.9.exe.lzma", // GitHub Releases
+  "https://dl.qiaodesktop.com/QiaoDesktop-1.0.45.9.exe.lzma", // Cloudflare R2
 ];
-const PKG_SHA256 = "54E9E9C4A519C6A14B58794F77F4E9B9BC10034414E8A4AEF87C5D0BA888CE99"; // 包 sha256（大写十六进制）；空 = 跳过校验（仅调试用，正式发版必填）
-const PKG_SIZE = 1117388;    // 包字节数；0 = 跳过 size 校验
+const PKG_SHA256 = "2B9BEC0C8265CCFCDCB5296681CB4C198D976C9B46FBF17E9B09BBC827D72264"; // 包 sha256（大写十六进制）；空 = 跳过校验（仅调试用，正式发版必填）
+const PKG_SIZE = 1124297;    // 包字节数；0 = 跳过 size 校验
 
 export default {
   async fetch(request, env, ctx) {
