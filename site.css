@@ -252,7 +252,24 @@ footer{background:var(--bg-deep);color:#9fb0c3;padding:32px 0;margin-top:67.2px;
 .gfree-list li::before{content:"";position:absolute;left:0;top:2.4px;width:12px;height:12px;border-radius:50%;background:rgba(46,125,91,.14)}
 .gfree-list li::after{content:"";position:absolute;left:3.4px;top:6px;width:4.8px;height:2.4px;border-left:1.6px solid var(--green);border-bottom:1.6px solid var(--green);transform:rotate(-45deg)}
 .gfree .btn{margin-top:auto;justify-content:center;font-size:12.8px;padding:11.2px 17.6px}
+/* 双格式下载（2026-10-28）：.lzma 是主推（体积约为 exe 的 1/4），.exe 并列可点。
+   两者同为按钮、同尺寸，只靠配色分主次 —— 不再用「大按钮 + 小字链接」的落差。 */
+.gfree-btns{display:grid;grid-template-columns:1fr 1fr;gap:7.2px;margin-top:auto}
+/* 按钮内部允许换行（2026-10-28）：文案变长后 nowrap 会撑出边框；
+   实际宽度够时仍显示为单行，只在极窄屏降级为两行。 */
+.gfree-btns .btn{margin-top:0;padding:11.2px 7.2px;font-size:11.2px;white-space:normal;line-height:1.28;text-align:center}
+.btn-outline{background:#fff;border-color:rgba(22,42,68,.22);color:var(--navy)}
+.btn-outline:hover{background:#f4f8f5;border-color:rgba(22,42,68,.45)}
 .gfree-meta{margin-top:9.6px;font-size:9.6px;color:var(--slate);line-height:1.6;text-align:center}
+/* 镜像源链接（2026-10-28）：全局 a 是 color:inherit + 无下划线 ⇒ 不补这行就看不出能点 */
+.gfree-meta a{color:var(--green);text-decoration:underline;text-underline-offset:2px}
+.gfree-meta a:hover{color:var(--navy)}
+/* 下载格式说明 + GitHub 镜像（2026-10-28）：原来 9.6px 太小读不清，提到与正文同级 11.2px；
+   靠颜色和居中弱化，不再靠字号。链接给绿线，保证「点得动」。 */
+.gfree-alt{margin-top:10.4px;font-size:11.2px;color:var(--slate);line-height:1.62;text-align:center}
+.gfree-alt a{color:var(--green);text-decoration:underline;text-underline-offset:2px}
+.gfree-alt b{color:var(--navy);font-weight:700}
+.gfree-alt a:hover{color:var(--navy)}
 @media(max-width:720px){
   .get-grid{grid-template-columns:1fr}
 }

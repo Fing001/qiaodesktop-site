@@ -1,4 +1,4 @@
-// Cloudflare Worker — GET /api/version
+// Cloudflare Worker — GET /api/version（客户端检查更新）+ GET /download（官网下载跳转）
 // ════════════════════════════════════════════════════════════════════
 // 用途：桌面程序「检查更新」的唯一端点。
 //   请求：GET /api/version?v=<版本号>&ch=<official|store>
@@ -14,8 +14,8 @@
 //
 // 🔴 部署形态（2026-10-22 起）：本项目在 Cloudflare 上是 **Worker + 静态资产**，
 //   不是 Pages —— 所以没有 functions/ 目录文件路由，本文件就是接口的唯一实现。
-//   路由规则见 wrangler.json 的 assets.run_worker_first：只有 /api/* 会进本 Worker，
-//   其余路径根本不进来（由静态资产直接响应）；env.ASSETS 那一行只是兜底。
+//   路由规则见 wrangler.json 的 assets.run_worker_first：只有 /api/* 与 /download、/download/*
+//   会进本 Worker，其余路径根本不进来（由静态资产直接响应）；env.ASSETS 那一行只是兜底。
 // ════════════════════════════════════════════════════════════════════
 
 // 🔴 每次发版只改这个常量区（改完 git push，Cloudflare 自动重新部署）
@@ -37,11 +37,47 @@ const PKG_URLS = [
 const PKG_SHA256 = "4DCCF4766E459016A5B0C8468E0068986D3B6AF2EF0999369154C4D82A42DE9F"; // 包 sha256（大写十六进制）；空 = 跳过校验（仅调试用，正式发版必填）
 const PKG_SIZE = 1128256;    // 包字节数；0 = 跳过 size 校验
 
+// 官网下载入口的物料（2026-10-28 新增）—— 给「人」点的，与上面给客户端用的 PKG_URLS 分开维护。
+//   [0] GitHub Releases —— 发布物料原址（exe 与 .lzma 同目录，附 README/CHANGELOG）
+//   [1] Cloudflare R2    —— 官网通道（国内期望速度更好），/download 默认走这里
+//   ⚠️ 两个数组的 URL 都带版本号 ⇒ 每次发版必须与 LATEST / PKG_URLS 一起改，漏改即发旧包。
+//   ⚠️ 不做跨类型回退（exe 未上传时不悄悄塞给用户一个 .lzma）：宁可 302 到一个 404，
+//      也不让用户下到与按钮描述不符的文件。
+const EXE_URLS = [
+  "https://github.com/Fing001/qiaodesktop-releases/releases/download/v1.0.45.16/QiaoDesktop-1.0.45.16.exe", // GitHub Releases
+  "https://dl.qiaodesktop.com/QiaoDesktop-1.0.45.16.exe", // Cloudflare R2
+];
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     // 容忍一个尾斜杠：/api/version 与 /api/version/ 等价
     const path = url.pathname.replace(/\/+$/, "") || "/";
+
+    // 官网下载入口（2026-10-28）：/download = 未压缩 exe（下载即用）；/download/lzma = 压缩包（需解压工具）。
+    //   默认跳官网 R2（国内更稳）；加 ?src=gh 换 GitHub 源。
+    //   ⚠️ 用 302 而不是 Worker 代理文件：文件本身在 R2/GitHub 上，代理大文件既费流量也失去 CDN 直连优势。
+    //   ⚠️ 必须带 no-store：URL 里写死了版本号，一旦 302 被浏览器/CDN 缓存，用户会永远停在旧版本。
+    //   ⚠️ 这两个路径要能进本 Worker，靠 wrangler.json 的 run_worker_first 显式列出，漏加会被静态资产直接 404。
+    if (path === "/download" || path === "/download/lzma") {
+      if (request.method !== "GET" && request.method !== "HEAD") {
+        return new Response("Method Not Allowed", { status: 405, headers: { allow: "GET, HEAD" } });
+      }
+      const dlSrc = (url.searchParams.get("src") || "").toLowerCase();
+      const ghFirst = dlSrc === "gh" || dlSrc === "github";
+      const ready = (path === "/download" ? EXE_URLS : PKG_URLS).filter(
+        (u) => typeof u === "string" && u.length > 0
+      );
+      // 默认取末位（R2），?src=gh 取首位（GitHub）；某源留空时自动用另一个
+      const target = ready.length === 0 ? "" : ghFirst ? ready[0] : ready[ready.length - 1];
+      if (!target) {
+        return new Response("Not Found", { status: 404, headers: { "cache-control": "no-store" } });
+      }
+      return new Response(null, {
+        status: 302,
+        headers: { location: target, "cache-control": "no-store" },
+      });
+    }
 
     if (path !== "/api/version") {
       // 兜底：非接口路径一律回给静态资产（正常走不到这里）

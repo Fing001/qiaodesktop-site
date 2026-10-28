@@ -130,23 +130,29 @@
         <ul class="gfree-list">
           <li>核心整理永久免费 —— 无功能限制、不用注册</li>
           <li>15 天内 PRO 全部功能开放试用</li>
-          <li>仅 4&nbsp;MB，绿色免安装</li>
+          <li>绿色免安装</li>
         </ul>
-        <a class="btn btn-primary" href="#">下载 Windows 版</a>
-        <div class="gfree-meta">Windows 10 / 11 · 64 位 · 4 MB · 免费</div>
+        <div class="gfree-btns">
+          <a class="btn btn-primary" href="/download/lzma">下载压缩版 &middot; 仅 1.1&nbsp;MB</a>
+          <a class="btn btn-outline" href="/download">下载 .exe 版 &middot; 仅 4&nbsp;MB</a>
+        </div>
+        <div class="gfree-alt">
+          <b>压缩版解压后与 .exe 版完全相同</b> —— 体积只有 1/4，下载更快<br>
+          压缩版为 .lzma 格式，直接用 7-Zip / WinRAR / Bandizip 解压即可
+        </div>
+        <div class="gfree-meta">镜像下载源：<a href="/download/lzma?src=gh">GitHub</a></div>
       </div>
       <!-- PRO 购买（复用 .buy 结构，窄版单列；href 占位 = Stripe Payment Link） -->
       <div class="buy buy--narrow" id="buy">
         <div class="buy-main">
           <div class="buy-kicker">PRO · 永久授权</div>
-          <!-- 🔴 价格开关（2026-10-23 定）：现在 = 首发价 19.99 为主价、24.99 划线；
+          <!-- 🔴 价格开关（2026-10-23 定）：现在 = 首发价 14.99 为主价、24.99 划线；
                做活动时保持此写法，活动结束把 b/s 内容互换、buy-sub 改回 "非订阅 · 含 1.x 全部更新" 即可（只动这两行）。 -->
-          <div class="buy-price"><b>US$19.99</b><s>US$24.99</s><span>/ 一次买断</span></div>
+          <div class="buy-price"><b>US$14.99</b><s>US$24.99</s><span>/ 一次买断</span></div>
           <div class="buy-sub">限时首发价（正式价 US$24.99）· 非订阅 · 含 1.x 全部更新</div>
         </div>
         <ul class="buy-list">
           <li>PRO 进阶功能全部解锁，永久有效</li>
-          <li>重装系统不用重新激活</li>
           <li>由 Stripe 收款，税费自动处理</li>
         </ul>
         <div class="buy-act">

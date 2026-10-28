@@ -16,7 +16,7 @@
 | `demo.css` / `demo.js` | 交互演示（作用域 `#qdDemo`）的样式与脚本，两页共用一份 |
 | `demo-assets/` | 演示素材：壁纸、界面图、盒子图（全部 WebP），分享卡 `og-en.jpg`（英）/ `og.jpg`（中） |
 | `_headers` | Cloudflare Workers 静态资产响应头：素材长缓存、HTML 每次重验证 |
-| `worker.js` | **唯一接口** `GET /api/version?v=<版本>&ch=<渠道>`（桌面程序检查更新用）：由 `wrangler.json` 的 `run_worker_first:["/api/*"]` 送入，其余路径直接走静态资产 |
+| `worker.js` | 接口与下载跳转：`GET /api/version?v=<版本>&ch=<渠道>`（桌面程序检查更新用）+ `GET /download`、`/download/lzma`（官网下载 302 跳转，支持 `?src=gh`）：由 `wrangler.json` 的 `run_worker_first` 送入，其余路径直接走静态资产 |
 | `wrangler.json` | Cloudflare 部署配置：Worker 入口 + 静态资产目录 + 404 处理；**本项目是 Worker + 静态资产，不是 Pages**，所以没有 `functions/` 目录路由 |
 | `db/schema.sql` | D1 计数表 `ping(day, version, channel, n)` 的建表脚本，只在控制台手工执行一次 |
 
@@ -58,11 +58,25 @@ python -m http.server 8000
 推送到 `main` 分支后由 **Cloudflare Workers Builds** 自动构建发布（静态资产 + `worker.js` 一个 Worker）。
 
 - 构建入口：仓库根目录的 `wrangler.json`（`assets.directory = "."`，即整个仓库就是静态目录）
-- `assets.run_worker_first: ["/api/*"]`：只有 `/api/*` 进 Worker，其余路径直接由静态资产响应
+- `assets.run_worker_first: ["/api/*", "/download", "/download/*"]`：只有这些路径进 Worker，其余路径直接由静态资产响应
+  （⚠️ `/download` 与 `/download/lzma` 是靠这一行才进 Worker 的，漏加 = 被静态资产 404）
 - `assets.not_found_handling: "404-page"`：未命中时返回 404（仓库里没有 `404.html`，所以用 Cloudflare 默认 404 页）
 - Dashboard 侧无需再配 Build command / 输出目录，全部由 `wrangler.json` 决定
 
 改 `LATEST`（`worker.js` 顶部常量）后 push 即生效，约 30 秒全球同步。
+
+### 官网下载入口（2026-10-28 新增）
+
+| 路径 | 302 跳到 | 用途 |
+|---|---|---|
+| `/download` | R2 上的 `QiaoDesktop-<版本>.exe` | 首页主按钮，下载即用 |
+| `/download?src=gh` | GitHub Releases 同名 exe | 镜像（国内 R2 更稳，GitHub 只作备选） |
+| `/download/lzma` | R2 上的 `QiaoDesktop-<版本>.exe.lzma` | 更小的压缩包，需 7-Zip / WinRAR / Bandizip 解压 |
+| `/download/lzma?src=gh` | GitHub Releases 同名 lzma | 镜像 |
+
+- 常量在 `worker.js` 的 `EXE_URLS` / `PKG_URLS`：前者给人点，后者给客户端自动更新（`/api/version` 的 `pkg`），**两者都要随版本号一起改**。
+- 302 带 `cache-control: no-store`：URL 里写死版本号，被缓存就会永远给旧包。
+- **每次发版必须把 `.exe` 和 `.exe.lzma` 都传到 R2 与 GitHub Releases**，只传 lzma 会让 `/download` 指向不存在的对象（302 之后 404）。
 
 ## 素材规范
 

@@ -57,12 +57,12 @@
         <p>What QiaoDesktop and this website do with your data &mdash; stated as plainly as we can manage.</p>
       </div>
       <div class="legal">
-        <p class="legal-meta">Last updated 22 October 2026 &nbsp;·&nbsp; Covers the QiaoDesktop desktop app and qiaodesktop.com</p>
+        <p class="legal-meta">Last updated 28 October 2026 &nbsp;·&nbsp; Covers the QiaoDesktop desktop app and qiaodesktop.com</p>
 
         <div class="legal-summary">
           <p><b>The short version</b></p>
           <p>The desktop app asks our site once a day whether a newer version exists. That request carries the version number and nothing else &mdash; nothing in it can tell two computers apart. No telemetry, no analytics, no crash reports. Everything else it knows stays in one folder on your own PC.</p>
-          <p>This site asks for no account and sets no cookies of its own. Our hosting provider keeps aggregate, cookieless visit counts.</p>
+          <p>This site asks for no account and sets no cookies of its own. Our hosting provider keeps aggregate, cookieless visit counts. If you buy a licence, Stripe takes the payment on its own page &mdash; we only receive your email and the order details, never your card.</p>
           <p>Our two contact pages load a Tencent online-consultation widget, and that widget sets a few cookies. If you would rather avoid them, email us instead &mdash; the address is on that page.</p>
         </div>
 
@@ -74,6 +74,7 @@
         <h3>2.1 It goes online for exactly one purpose: updates</h3>
         <p>At most once a day the app sends a version query to qiaodesktop.com to find out whether a newer release exists. The request carries two things only: <b>the app&rsquo;s current version number</b> and <b>the distribution channel</b> (website or store). No device ID, no hardware fingerprint, no installation ID, no file paths or filenames, no record of what you did &mdash; nothing in that request can tell two computers apart. All we can tell from it is how many times a given version was queried on a given day, never who queried it.</p>
         <p>That same request is the update check itself, not an analytics channel: we run no usage analytics, collect no crash reports and use no advertising identifiers. With the network disconnected the app works exactly the same, it just cannot tell you about a new version.</p>
+        <p>If you accept an update, the app downloads the release package (about 1&nbsp;MB), unpacks it, replaces its own program file and restarts. That download is the only other network request the app ever makes; it happens only when you say yes, and it comes from our own site or, as a fallback, from GitHub.</p>
         <p>To turn it off: open <b>Settings &rarr; General</b> and clear &ldquo;Check for updates daily&rdquo;. Once it is off, the app sends no network requests at all &mdash; not a single byte.</p>
 
         <h3>2.2 What it stores, and where</h3>
@@ -87,12 +88,13 @@
             <tr><td><code>debug\</code></td><td>Error logs, written only when something fails &mdash; never during a normal start.</td></tr>
           </tbody>
         </table>
+        <p>Two more folders sit alongside them: <code>backups\</code> holds dated copies of your config and notes, and <code>update\</code> holds the files involved while an update is being applied. Neither is ever uploaded.</p>
 
         <h3>2.3 Why it reads your files</h3>
         <p>To draw icons, names and thumbnails inside a box, the app reads file and folder listings from your disk and extracts icons from the files themselves. A mapping box shows whatever sits in the folder you pointed it at. All of this happens locally and in memory, and produces nothing but pixels on your screen &mdash; file contents are never transmitted, copied elsewhere, or collected into any database.</p>
 
         <h3>2.4 Trial period and activation</h3>
-        <p>The 15-day full-feature trial starts on first launch; only the start timestamp is written, into the config folder above. An activation code is verified entirely on your machine: the app checks its signature against a public key built into the program, then compares a hardware fingerprint so one code cannot be reused on a different computer. No activation request is sent to us, and we are not told when you activate.</p>
+        <p>The 15-day full-feature trial starts on first launch; the start time is written into the config folder above, encrypted, together with your code once you activate. An activation code is verified entirely on your machine: the app checks its signature against a public key built into the program, then compares a machine fingerprint &mdash; derived from your system disk serial number, your CPU and the Windows machine ID, computed locally and never sent anywhere &mdash; so one code cannot be reused on a different computer. No activation request reaches us, and we are not told when you activate.</p>
 
         <h3>2.5 Error logs</h3>
         <p>When something fails, the app may write a short plain-text log under <code>debug\</code>, which can include the file paths involved. Logs stay on your disk, are never uploaded, and you may delete them at any time.</p>
@@ -103,7 +105,7 @@
         <h2>3. This website</h2>
 
         <h3>3.1 No account, no forms</h3>
-        <p>There is no login, no sign-up, no comment box and no contact form. The site never asks for your name, address or phone number.</p>
+        <p>There is no login, no sign-up, no comment box and no contact form. Apart from what Stripe needs to process a purchase, the site never asks for your name, address or phone number.</p>
 
         <h3>3.2 Cookies set by the site itself</h3>
         <p>None. Our pages store nothing in cookies, <code>localStorage</code> or <code>sessionStorage</code>. The live demo is a self-contained animation that records no events.</p>
@@ -123,11 +125,18 @@
         <h3>3.5 How to avoid the widget</h3>
         <p>Keep off the contact pages and none of the above happens &mdash; the widget is not loaded anywhere else. If you want to reach us without it, use the email address at the end of this page. You can also block third-party cookies or cross-site scripts in your browser; the rest of the site keeps working normally.</p>
 
+        <h3>3.6 Buying a licence</h3>
+        <p>Payment is handled entirely by Stripe, on Stripe&rsquo;s own checkout page. Your card details go straight to Stripe: they are never sent to us, and we have no way to see or store them.</p>
+        <p>What we do receive after a completed purchase: <b>your email address</b> (the activation code is sent there), the <b>order number</b>, the <b>amount and currency</b>, the <b>date</b>, and the <b>billing country</b> Stripe records for the payment, plus the <b>billing address</b> where tax rules require one. We keep these to issue the code, to answer support questions about that order, to handle a re-issue or refund, and to meet the record-keeping rules that apply to selling software. We never see or store your card number, and we put none of it to marketing use.</p>
+        <p>Stripe also runs its own fraud checks, and for that purpose it acts as an independent data controller. What Stripe does with data is governed by <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Stripe&rsquo;s privacy policy</a>.</p>
+
         <h2>4. Third-party services</h2>
         <table>
           <thead><tr><th>Service</th><th>What it does</th><th>Provider</th></tr></thead>
           <tbody>
-            <tr><td>Cloudflare Workers &amp; Web Analytics</td><td>Hosting; cookieless visit counts on every page</td><td>Cloudflare, Inc. &mdash; <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">policy</a></td></tr>
+            <tr><td>Cloudflare Workers, Web Analytics &amp; R2</td><td>Hosting; cookieless visit counts on every page; storage for the installer download</td><td>Cloudflare, Inc. &mdash; <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">policy</a></td></tr>
+            <tr><td>Stripe</td><td>Card payment for licences, taken on Stripe&rsquo;s own checkout page</td><td>Stripe, Inc. &mdash; <a href="https://stripe.com/privacy" target="_blank" rel="noopener">policy</a></td></tr>
+            <tr><td>GitHub Releases &amp; API</td><td>Backup source for the update check and for the installer download</td><td>GitHub, Inc. &mdash; <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">policy</a></td></tr>
             <tr><td>Online-consultation widget (knocket-sdk)</td><td>Live chat, loaded on the contact pages only</td><td>Tencent Cloud &mdash; <a href="https://www.tencent.com/en-us/privacy-policy.html" target="_blank" rel="noopener">policy</a></td></tr>
           </tbody>
         </table>
@@ -140,7 +149,7 @@
         <p>The app and the site are general-purpose desktop-organisation tools, not aimed at children. We do not knowingly collect personal information from children &mdash; and since the app collects nothing at all, there is nothing for a child using it to hand over.</p>
 
         <h2>7. Your rights</h2>
-        <p>Because we hold no data about you from the app, most requests can be satisfied by your own file manager. For anything that does reach us &mdash; an email you sent, a message you typed into the chat &mdash; you may ask us to show it, correct it or delete it, and we will. Write to the address below.</p>
+        <p>Because we hold no data about you from the app, most requests can be satisfied by your own file manager. For anything that does reach us &mdash; an email you sent, a message you typed into the chat, or the record of a purchase &mdash; you may ask us to show it, correct it or delete it, and we will. The one exception is a payment record we are required by tax law to keep for a set period; ask us and we will tell you which one that is. Write to the address below.</p>
 
         <h2>8. Changes to this policy</h2>
         <p>If the app or the site starts doing something new that affects privacy, this page is updated first and the date at the top changes. Significant changes are also noted in the app&rsquo;s release notes.</p>
