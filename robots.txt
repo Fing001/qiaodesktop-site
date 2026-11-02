@@ -1,0 +1,11 @@
+# robots.txt — www.qiaodesktop.com
+# 生成于 2026-11-03
+
+User-agent: *
+Allow: /
+
+# 感谢页是 noindex 的，这里再挡一次，省得爬虫白跑
+Disallow: /thanks/
+Disallow: /zh/thanks/
+
+Sitemap: https://www.qiaodesktop.com/sitemap.xml

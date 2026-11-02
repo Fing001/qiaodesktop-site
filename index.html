@@ -7,18 +7,18 @@
 <title>QiaoDesktop — a clean, tidy desktop for Windows</title>
 <meta name="description" content="QiaoDesktop is a Windows desktop organizer and beautifier: file boxes, folder mapping, idle/active modes, wallpaper switching and edge hot zones. Runs locally — your files are never uploaded." />
 <!-- 分享卡（og / twitter）：og:url、canonical 与 og:image 的域名需与最终部署域名一致 -->
-<link rel="canonical" href="https://qiaodesktop.com/" />
-<link rel="alternate" hreflang="en" href="https://qiaodesktop.com/" />
-<link rel="alternate" hreflang="zh-Hans" href="https://qiaodesktop.com/zh/" />
-<link rel="alternate" hreflang="x-default" href="https://qiaodesktop.com/" />
+<link rel="canonical" href="https://www.qiaodesktop.com/" />
+<link rel="alternate" hreflang="en" href="https://www.qiaodesktop.com/" />
+<link rel="alternate" hreflang="zh-Hans" href="https://www.qiaodesktop.com/zh/" />
+<link rel="alternate" hreflang="x-default" href="https://www.qiaodesktop.com/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="QiaoDesktop" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:locale:alternate" content="zh_CN" />
-<meta property="og:url" content="https://qiaodesktop.com/" />
+<meta property="og:url" content="https://www.qiaodesktop.com/" />
 <meta property="og:title" content="QiaoDesktop — a clean, tidy desktop for Windows" />
 <meta property="og:description" content="A Windows desktop organizer: put your files in boxes and keep only what you need on screen. 4 MB, no install required." />
-<meta property="og:image" content="https://qiaodesktop.com/demo-assets/og-en.jpg" />
+<meta property="og:image" content="https://www.qiaodesktop.com/demo-assets/og-en.jpg" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="QiaoDesktop — a clean, tidy desktop for Windows" />
 <meta name="twitter:description" content="A Windows desktop organizer: files into boxes, desktop stays clear. 4 MB, no install required." />
-<meta name="twitter:image" content="https://qiaodesktop.com/demo-assets/og-en.jpg" />
+<meta name="twitter:image" content="https://www.qiaodesktop.com/demo-assets/og-en.jpg" />
 <link rel="stylesheet" href="demo.css" />
 <link rel="stylesheet" href="site.css">
 <style>
@@ -146,17 +146,18 @@
       <div class="buy buy--narrow" id="buy">
         <div class="buy-main">
           <div class="buy-kicker">PRO · lifetime licence</div>
-          <!-- 🔴 价格开关（2026-10-23 定）：现在 = 首发价 14.99 为主价、24.99 划线；
-               做活动时保持此写法，活动结束把 b/s 内容互换、buy-sub 改回 "No subscription · …" 即可（只动这两行）。 -->
-          <div class="buy-price"><b>US$14.99</b><s>US$24.99</s><span>/ one-time</span></div>
-          <div class="buy-sub">Limited-time launch price (regular US$24.99) · no subscription · all 1.x updates included</div>
+          <!-- 🔴 价格开关（2026-10-23 定；2026-11-03 正式价 24.99 → 19.99）：当前 = 首发价 14.99 为主价、19.99 划线。
+               做活动时保持此写法。活动结束要改成：主价写 19.99，并整段删掉 <s>…</s>（切勿与 <b> 互换，否则划线价反而低于主价），buy-sub 去掉 "Limited-time launch price (regular …)" 前缀、改为 "No subscription · all 1.x updates included"。
+               另外 Stripe 侧 Price 金额建后不可改：需新建 19.99 的 Price 与 Payment Link，并同步本页按钮 href。 -->
+          <div class="buy-price"><b>US$14.99</b><s>US$19.99</s><span>/ one-time</span></div>
+          <div class="buy-sub">Limited-time launch price (regular US$19.99) · no subscription · all 1.x updates included</div>
         </div>
         <ul class="buy-list">
           <li>Every PRO feature unlocked, for good</li>
           <li>Checkout by Stripe — tax handled for you</li>
         </ul>
         <div class="buy-act">
-          <a class="btn btn-buy" href="#" id="buyBtn">Buy PRO licence</a>
+          <a class="btn btn-buy" href="https://buy.stripe.com/aFa9ALdB34D34a9cde8AE00" target="_blank" rel="noopener" id="buyBtn">Buy PRO licence</a>
           <div class="buy-note">Checkout asks for your <b>Machine Code</b> (Settings → PRO Features → Copy machine code) — the <b>activation code</b> is emailed right after.</div>
           <div class="buy-note">30-day money-back guarantee · <a href="terms/index.html">Terms of Sale</a> · <a href="contact/index.html">contact us</a></div>
         </div>
@@ -292,7 +293,7 @@
 <footer>
   <div class="wrap foot-inner">
     <div class="brand"><svg class="mark" viewBox="140 140 744 744" role="img" aria-label="QiaoDesktop"><defs><mask id="holesFoot"><rect x="0" y="0" width="1024" height="1024" fill="white"/><rect x="434" y="434" width="138" height="138" rx="33" ry="33" fill="black"/><rect x="656" y="434" width="138" height="138" rx="33" ry="33" fill="black"/><rect x="434" y="656" width="138" height="138" rx="33" ry="33" fill="black"/><rect x="656" y="656" width="138" height="138" rx="33" ry="33" fill="black"/><g fill="none" stroke="white" stroke-width="21.44"><circle cx="503" cy="503" r="40.34"/><line x1="529.0" y1="529.0" x2="545.93" y2="545.93" stroke-linecap="round"/></g><path d="M701.09 673.94 H717.85 A51.06 51.06 0 0 1 717.85 776.06 H701.09 A20 20 0 0 1 681.09 756.06 V693.94 A20 20 0 0 1 701.09 673.94 Z M716.53 695.39 H717.85 A29.61 29.61 0 0 1 717.85 754.61 H716.53 A14 14 0 0 1 702.53 740.61 V709.39 A14 14 0 0 1 716.53 695.39 Z" fill="white" fill-rule="evenodd"/></mask></defs><g mask="url(#holesFoot)"><rect x="140" y="140" width="540" height="540" rx="102" ry="102" fill="#FFFFFF"/><rect x="242" y="242" width="540" height="540" rx="102" ry="102" fill="#FFFFFF"/><rect x="344" y="344" width="540" height="540" rx="102" ry="102" fill="#FFFFFF"/></g></svg> QiaoDesktop</div>
-    <div>© Yeshu Studio · Built by zyssj · No uploads · Local first · <a href="privacy/index.html">Privacy</a> · <a href="terms/index.html">Terms</a></div>
+    <div>© Yeshu Studio · Built by zyssj · No uploads · Local first · <a href="fences-alternative/index.html">Fences alternative</a> · <a href="privacy/index.html">Privacy</a> · <a href="terms/index.html">Terms</a></div>
     <div class="foot-disclaimer">Disclaimer: the Microsoft Windows interface, icons, and the interfaces, icons, names and trademarks of other third-party software shown in the screenshots on this site are used solely to demonstrate how QiaoDesktop works in those environments. All such trademarks and copyrights belong to their respective owners. QiaoDesktop is not affiliated with, sponsored by, or endorsed by Microsoft or any other third party. If you believe any content here raises a rights issue, please <a href="contact/index.html">contact us</a> and we will verify and address it promptly.</div>
   </div>
 </footer>
