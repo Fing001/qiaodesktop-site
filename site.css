@@ -207,10 +207,10 @@ footer{background:var(--bg-deep);color:#9fb0c3;padding:32px 0;margin-top:67.2px;
   .contact-card{padding:19.2px}
 }
 
-/* ===== 隐私政策页（privacy/index.html、zh/privacy/index.html 专用） ===== */
-#privacy{padding:73.6px 0 48px}
-#privacy .sec-head{max-width:720px}
-#privacy .sec-head h1{font-size:27.2px;font-weight:820;margin:8px 0 9.6px;letter-spacing:-0.3px}
+/* ===== 法律页（privacy/ 与 terms/，中英四页共用） ===== */
+#privacy,#terms{padding:73.6px 0 48px}
+#privacy .sec-head,#terms .sec-head{max-width:720px}
+#privacy .sec-head h1,#terms .sec-head h1{font-size:27.2px;font-weight:820;margin:8px 0 9.6px;letter-spacing:-0.3px}
 .legal{max-width:640px;margin:0 auto;background:#fff;border:0.8px solid var(--line);
   border-radius:var(--radius);padding:25.6px;box-shadow:var(--shadow)}
 .legal-meta{font-size:10.4px;color:#8b94a3;margin:0 0 14.4px}
@@ -220,6 +220,8 @@ footer{background:var(--bg-deep);color:#9fb0c3;padding:32px 0;margin-top:67.2px;
 .legal-summary p:last-child{margin-bottom:0}
 .legal h2{font-size:13.6px;margin:22.4px 0 8px;color:var(--ink);letter-spacing:-0.1px}
 .legal h2:first-of-type{margin-top:0}
+/* 从别处带 #锚点 跳进来时，别让标题被固定导航栏挡住 */
+.legal h2[id]{scroll-margin-top:88px}
 .legal h3{font-size:11.6px;margin:14.4px 0 6.4px;color:var(--ink)}
 .legal p,.legal li{color:var(--slate);font-size:11.6px;line-height:1.7}
 .legal p{margin:0 0 9.6px}
