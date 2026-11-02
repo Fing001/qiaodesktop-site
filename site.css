@@ -98,6 +98,9 @@ section{padding:67.2px 0}
 .card .ico svg{width:19.2px;height:19.2px;display:block}
 .card h3{font-size:14.4px;margin-bottom:6.4px}
 .card p{color:var(--slate);font-size:11.6px}
+/* 热键卡的键盘布局备注（2026-10-30 加）：主文案讲行为，这行讲「键位与字符」 */
+.card p.hk{margin-top:8px;padding-top:8px;border-top:0.8px dashed var(--line);
+  font-size:10.4px;line-height:1.55;color:#7c8794}
 
 /* Float/Sink spotlight */
 .spot{background:var(--bg-deep);color:#e8edf4}
