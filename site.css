@@ -402,3 +402,150 @@ footer{background:var(--bg-deep);color:#9fb0c3;padding:32px 0;margin-top:67.2px;
   .qc-check{padding:16px}
   .qc-lead{font-size:12.8px}
 }
+
+
+
+/* ==========================================================================
+   指南文章区（/zh/guides/ 列表页 + 单篇文章）
+   2026-11-05 重做：阅读页独立放宽容器、改用真实阅读字号、补配图 / 步骤块 / 侧边目录。
+   ⚠️ 全站主文件沿用 ×0.8 基准（正文 12.8px）；长文在 1440 视口实测过小，
+      故本区单独按真实像素取字号（正文 15px / 行高 1.85），不影响其它页面。
+   ========================================================================== */
+
+.g-wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.g-page{padding:8px 0 40px}
+.g-kicker{display:inline-block;font-size:11px;font-weight:800;letter-spacing:1.8px;
+  text-transform:uppercase;color:#a67c00;background:#fff6d9;border-radius:999px;padding:5px 12px}
+
+/* ----- 列表页 ----- */
+#guides{padding:56px 0 40px}
+.guides-hero{text-align:center;max-width:700px;margin:0 auto 34px}
+.guides-hero h1{font-size:36px;font-weight:820;letter-spacing:-.8px;margin:14px 0 12px;line-height:1.25}
+.guides-hero p{font-size:15px;line-height:1.8;color:var(--slate)}
+.g-hero-shot{margin:0 auto 44px;max-width:960px}
+.g-hero-shot img{width:100%;height:auto;display:block;border:1px solid var(--line);
+  border-radius:14px;box-shadow:var(--shadow-lg)}
+.g-hero-shot figcaption{text-align:center;font-size:12.5px;color:var(--slate);margin-top:10px}
+
+.guides-list{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:0 0 52px}
+.gcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;transition:box-shadow .18s,transform .18s}
+.gcard:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+/* ⚠️ 必须显式写 height：HTML 里的 height="760" 是 presentational hint，
+   不写 CSS height 会让它以 760px 固定高度生效，aspect-ratio 被忽略 ⇒ 卡片图被拉成竖条。 */
+.gcard img{width:100%;height:196px;object-fit:cover;object-position:top left;
+  display:block;border-bottom:1px solid var(--line)}
+.gcard-in{display:flex;flex-direction:column;flex:1;padding:20px 20px 22px}
+.gcard-top{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+.gcard-num{font-size:11px;font-weight:800;letter-spacing:.6px;color:#fff;background:var(--navy);
+  border-radius:6px;padding:3px 7px}
+.gcard-tag{font-size:11px;font-weight:700;letter-spacing:.8px;color:#a67c00}
+.gcard h2{font-size:19px;font-weight:800;letter-spacing:-.3px;line-height:1.4;margin:0 0 10px}
+.gcard p{font-size:13.5px;line-height:1.75;color:var(--slate);margin:0 0 18px}
+.gcard-more{margin-top:auto;display:flex;align-items:center;justify-content:space-between;
+  font-size:13px;font-weight:700;color:var(--navy)}
+.gcard-more .arr{font-size:17px;line-height:1}
+.gcard:hover .gcard-more .arr{transform:translateX(3px)}
+
+.g-extra{max-width:960px;margin:0 auto}
+.g-extra h2{font-size:23px;font-weight:820;margin:0 0 8px;letter-spacing:-.4px}
+.g-extra > p{font-size:14px;color:var(--slate);margin:0 0 22px}
+
+/* ----- 文章页 ----- */
+.g-bread{font-size:13px;color:var(--slate);margin:34px 0 26px}
+.g-bread a{color:var(--navy);font-weight:600}
+.g-bread a:hover{text-decoration:underline;text-underline-offset:3px}
+.g-bread span{margin:0 8px;color:#c3cad4}
+
+.g-layout{display:grid;grid-template-columns:180px minmax(0,1fr);gap:48px;align-items:start}
+.g-toc{position:sticky;top:82px;font-size:13px}
+.g-toc .t{font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;
+  color:#9aa4b1;margin-bottom:12px}
+.g-toc a{display:block;color:var(--slate);padding:6px 0 6px 12px;border-left:2px solid var(--line);line-height:1.5}
+.g-toc a:hover{color:var(--navy);border-left-color:var(--gold)}
+
+.g-body{max-width:760px;padding-bottom:24px}
+.article h1{font-size:32px;font-weight:820;letter-spacing:-.7px;line-height:1.3;margin:0 0 14px}
+.article .lead{font-size:16.5px;line-height:1.8;color:var(--slate);margin:0 0 20px}
+.article-meta{font-size:12.5px;color:#8b94a3;margin:0 0 30px;padding-bottom:18px;
+  border-bottom:1px solid var(--line)}
+.article p{font-size:15px;line-height:1.85;color:#33404f;margin:0 0 16px}
+.article h2{font-size:22px;font-weight:820;letter-spacing:-.4px;color:var(--ink);
+  margin:44px 0 16px;padding-top:6px;scroll-margin-top:82px}
+.article h2:first-of-type{margin-top:0}
+.article h3{font-size:17px;font-weight:800;color:var(--ink);margin:0 0 8px}
+.article b,.article strong{color:var(--ink);font-weight:700}
+.article a{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
+.article ul,.article ol{padding-left:22px;margin:0 0 18px}
+.article li{font-size:15px;line-height:1.85;color:#33404f;margin-bottom:8px}
+.article kbd{font-family:inherit;font-size:13px;background:var(--bg-soft);
+  border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;
+  padding:2px 7px;color:var(--ink);white-space:nowrap}
+
+/* 步骤块 */
+.g-steps{margin:0 0 30px}
+.g-step{display:grid;grid-template-columns:36px minmax(0,1fr);gap:15px;
+  padding:0 0 24px;margin:0 0 24px;border-bottom:1px dashed var(--line)}
+.g-step:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.g-step-n{width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800}
+.g-step-b p{margin:0 0 10px}
+.g-step-b p:last-child{margin-bottom:0}
+.g-step-b .hint{font-size:13.5px;color:var(--slate)}
+
+/* 配图 */
+.g-figure{margin:22px 0 30px}
+.g-figure img{width:100%;height:auto;display:block;border:1px solid var(--line);
+  border-radius:12px;background:#fff}
+.g-figure.tall img{max-width:520px;margin:0 auto}
+.g-figure figcaption{font-size:12.5px;line-height:1.7;color:var(--slate);
+  text-align:center;margin-top:10px}
+.g-shotnote{font-size:12.5px;color:#8b94a3;margin:-14px 0 26px}
+
+/* 提示 / 误区 / 表格 */
+.g-callout{margin:0 0 24px;padding:16px 18px;background:var(--bg-soft);
+  border-left:3px solid var(--gold);border-radius:0 10px 10px 0}
+.g-callout p{margin:0 0 8px;font-size:14px;line-height:1.8}
+.g-callout p:last-child{margin-bottom:0}
+.g-mis{border-left:3px solid #e0a500;background:#fffaf0;border-radius:0 10px 10px 0;
+  padding:15px 18px;margin:0 0 14px}
+.g-mis h3{font-size:15px;margin:0 0 6px}
+.g-mis p{font-size:14px;line-height:1.75;margin:0}
+.article table{width:100%;border-collapse:collapse;font-size:13.5px;margin:0 0 26px}
+.article th,.article td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);
+  color:#33404f;vertical-align:top;line-height:1.7}
+.article th{color:var(--ink);font-weight:800;background:var(--bg-soft)}
+.article tr:last-child td{border-bottom:0}
+.article-note{margin:34px 0 0;padding:18px 20px;background:var(--bg-soft);
+  border:1px solid var(--line);border-radius:12px;font-size:13.5px;color:var(--slate);
+  line-height:1.8}
+.article-nav{display:flex;justify-content:space-between;gap:16px;margin:36px 0 0;
+  padding-top:20px;border-top:1px solid var(--line);font-size:14px;font-weight:700}
+.article-nav a{color:var(--navy)}
+.article-nav a:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* ----- 响应式 ----- */
+@media(max-width:1000px){
+  .g-layout{grid-template-columns:1fr;gap:0}
+  .g-toc{display:none}
+  .g-body{max-width:none}
+  .guides-list{grid-template-columns:repeat(2,1fr)}
+  .gcard:last-child{grid-column:1 / -1;max-width:none}
+}
+@media(max-width:720px){
+  .g-wrap{padding:0 18px}
+  #guides{padding:40px 0 24px}
+  .guides-hero h1{font-size:28px}
+  .guides-hero p{font-size:14px}
+  .guides-list{grid-template-columns:1fr}
+  .gcard:last-child{grid-column:auto}
+  .gcard h2{font-size:18px}
+  .g-extra h2{font-size:20px}
+  .article h1{font-size:26px}
+  .article .lead{font-size:15px}
+  .article p,.article li{font-size:14.5px}
+  .article h2{font-size:19px;margin:34px 0 14px}
+  .article table{font-size:12.5px}
+  .article th,.article td{padding:9px 10px}
+  .article-nav{flex-direction:column;gap:10px}
+}

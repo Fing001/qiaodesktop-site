@@ -41,6 +41,10 @@
 /fences-alternative/*
   Cache-Control: public, max-age=0, must-revalidate
 
+# 指南文章区：目录式 URL（/zh/guides/xxx/）不会命中 /*.html，必须单独写
+/zh/guides/*
+  Cache-Control: public, max-age=0, must-revalidate
+
 /sitemap.xml
   Content-Type: application/xml; charset=utf-8
   Cache-Control: public, max-age=3600
