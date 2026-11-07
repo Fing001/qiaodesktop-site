@@ -199,12 +199,18 @@ footer{background:var(--bg-deep);color:#9fb0c3;padding:32px 0;margin-top:67.2px;
 .contact-mail svg{flex:0 0 auto;width:14.4px;height:14.4px}
 .contact-list{padding-left:16px;color:var(--slate);font-size:11.6px;margin:0 0 0 0}
 .contact-list li{margin-bottom:4.8px}
-.contact-tip{margin-top:20.8px;padding:11.2px 14.4px;background:var(--bg-soft);
-  border:0.8px solid var(--line);border-radius:9.6px;color:var(--slate);font-size:11.2px}
-.contact-tip b{color:var(--ink)}
+/* 右下角在线咨询入口：提到首屏，替代原埋在卡片底部的小字提示 */
+.contact-chat-cta{max-width:640px;margin:0 auto 19.2px;display:flex;align-items:center;gap:14.4px;
+  padding:16px 19.2px;background:#fff8e6;border:1.6px solid var(--gold);
+  border-radius:12.8px;box-shadow:0 4.8px 16px rgba(255,192,0,.16)}
+.contact-chat-cta .cc-arrow{flex:none;font-size:25.6px;line-height:1;color:#c89000;font-weight:800}
+.contact-chat-cta b{display:block;font-size:14.4px;font-weight:800;color:var(--ink)}
+.contact-chat-cta .cc-sub{display:block;margin-top:3.2px;font-size:12px;color:var(--slate)}
+.contact-chat-cta strong{color:var(--navy)}
 @media(max-width:480px){
   #contact .sec-head h1{font-size:20.8px}
   .contact-card{padding:19.2px}
+  .contact-chat-cta{padding:12.8px 14.4px;gap:11.2px}
 }
 
 /* ===== 法律页（privacy/ 与 terms/，中英四页共用） ===== */
