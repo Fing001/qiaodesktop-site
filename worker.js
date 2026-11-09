@@ -19,9 +19,9 @@
 // ════════════════════════════════════════════════════════════════════
 
 // 🔴 每次发版只改这个常量区（改完 git push，Cloudflare 自动重新部署）
-const LATEST = "1.1.2.0";
+const LATEST = "1.1.3.0";
 const DOWNLOAD_URL = "https://www.qiaodesktop.com/";
-const NOTES = "下载源可自选（Cloudflare / GitHub / 阿里云）；托盘重启与自动更新不再失效；便签编辑框不再卡死、底色不再发灰；卡片更紧凑。";
+const NOTES = "修复：设置 → 更新卡里的「当前版本」不再显示错乱（此前 1.1.2.0 会显示成 1.1.02，现在完整显示四段）。";
 
 // 更新包分发（2026-11-09 起三源）：同一个包传三处，sha256/size 同一份。
 //   [0] GitHub Releases —— 面向人的发布物料（exe/CHANGELOG/README）就在 GitHub，包同址；
@@ -35,12 +35,12 @@ const NOTES = "下载源可自选（Cloudflare / GitHub / 阿里云）；托盘�
 //   ⚠️ 留空 = 该源未就绪；全部留空时不下发 pkg（客户端维持"只检查不下载"的旧行为）。
 //   占位说明：URL 填好即开通，无需改客户端。
 const PKG_URLS = [
-  "https://github.com/Fing001/qiaodesktop-releases/releases/download/v1.1.2.0/QiaoDesktop.exe.lzma", // GitHub Releases
-  "https://dl.qiaodesktop.com/QiaoDesktop.exe.lzma?v=1.1.2.0", // Cloudflare R2
-  "https://qiaodesktop-dl.oss-cn-shenzhen.aliyuncs.com/QiaoDesktop.exe.lzma?v=1.1.2.0", // 阿里云 OSS（深圳）
+  "https://github.com/Fing001/qiaodesktop-releases/releases/download/v1.1.3.0/QiaoDesktop.exe.lzma", // GitHub Releases
+  "https://dl.qiaodesktop.com/QiaoDesktop.exe.lzma?v=1.1.3.0", // Cloudflare R2
+  "https://qiaodesktop-dl.oss-cn-shenzhen.aliyuncs.com/QiaoDesktop.exe.lzma?v=1.1.3.0", // 阿里云 OSS（深圳）
 ];
-const PKG_SHA256 = "053A29E7BE6B15882BA6C2D6C32ACFEE2E3743ABC155D6B84B5D680AC51F4E83"; // 包 sha256（大写十六进制）；空 = 跳过校验（仅调试用，正式发版必填）
-const PKG_SIZE = 1148290;    // 包字节数；0 = 跳过 size 校验
+const PKG_SHA256 = "B5DB304619676A39762EE8D553BFE81881041CCCD2391D31DC06F5CCDFBF9A0A"; // 包 sha256（大写十六进制）；空 = 跳过校验（仅调试用，正式发版必填）
+const PKG_SIZE = 1155791;    // 包字节数；0 = 跳过 size 校验
 
 // 官网下载入口的物料（2026-10-28 新增）—— 给「人」点的，与上面给客户端用的 PKG_URLS 分开维护。
 //   [0] GitHub Releases —— 发布物料原址（exe 与 .lzma 同目录，附 README/CHANGELOG）
@@ -49,9 +49,9 @@ const PKG_SIZE = 1148290;    // 包字节数；0 = 跳过 size 校验
 //   ⚠️ 不做跨类型回退（exe 未上传时不悄悄塞给用户一个 .lzma）：宁可 302 到一个 404，
 //      也不让用户下到与按钮描述不符的文件。
 const EXE_URLS = [
-  "https://github.com/Fing001/qiaodesktop-releases/releases/download/v1.1.2.0/QiaoDesktop.exe", // GitHub Releases
-  "https://dl.qiaodesktop.com/QiaoDesktop.exe?v=1.1.2.0", // Cloudflare R2
-  "https://qiaodesktop-dl.oss-cn-shenzhen.aliyuncs.com/QiaoDesktop.exe?v=1.1.2.0", // 阿里云 OSS（深圳）
+  "https://github.com/Fing001/qiaodesktop-releases/releases/download/v1.1.3.0/QiaoDesktop.exe", // GitHub Releases
+  "https://dl.qiaodesktop.com/QiaoDesktop.exe?v=1.1.3.0", // Cloudflare R2
+  "https://qiaodesktop-dl.oss-cn-shenzhen.aliyuncs.com/QiaoDesktop.exe?v=1.1.3.0", // 阿里云 OSS（深圳）
 ];
 
 export default {
