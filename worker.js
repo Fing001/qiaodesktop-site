@@ -2,7 +2,7 @@
 // ════════════════════════════════════════════════════════════════════
 // 用途：桌面程序「检查更新」的唯一端点。
 //   请求：GET /api/version?v=<版本号>&ch=<official|store>
-//   响应：{ latest, url, notes, pkg }（200）
+//   响应：{ latest, url, pkg }（200）
 //     pkg = { url, urls, sha256, size } | null（null = 只检查不提供下载，客户端不显示下载按钮）
 //
 // 🔴 隐私边界（与隐私政策 /zh/privacy 的 §2.1 一一对应，改这里必须同步改政策）：
@@ -21,7 +21,6 @@
 // 🔴 每次发版只改这个常量区（改完 git push，Cloudflare 自动重新部署）
 const LATEST = "1.1.7.0";
 const DOWNLOAD_URL = "https://www.qiaodesktop.com/";
-const NOTES = "改进：设置里两条透明度滑杆改名为「平时透明度 / 呼出透明度」，盒子右键菜单改为「样式&设置」，PRO 功能页新增联系邮箱（可一键复制）。功能与行为无变化。";
 
 // 更新包分发（2026-11-09 起三源）：同一个包传三处，sha256/size 同一份。
 //   [0] GitHub Releases —— 面向人的发布物料（exe/CHANGELOG/README）就在 GitHub，包同址；
@@ -136,7 +135,10 @@ export default {
         ? { url: pkgUrls[0], urls: pkgUrls, sha256: PKG_SHA256, size: PKG_SIZE }
         : null;
 
-    return json({ latest: LATEST, url: DOWNLOAD_URL, notes: NOTES, pkg }, 200);
+    // 响应只给客户端真正会用的字段：latest（比对版本）/ pkg（下载指令）。
+    //   2026-11-27 删掉 notes：从上线起就没有消费方（客户端不解析、站点不读），
+    //   文案停在 1.1.5.0 属「会过期的死数据」；将来要做「更新说明」再按需重加。
+    return json({ latest: LATEST, url: DOWNLOAD_URL, pkg }, 200);
   },
 };
 
