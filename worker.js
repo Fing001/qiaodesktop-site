@@ -19,7 +19,7 @@
 // ════════════════════════════════════════════════════════════════════
 
 // 🔴 每次发版只改这个常量区（改完 git push，Cloudflare 自动重新部署）
-const LATEST = "1.1.6.0";
+const LATEST = "1.1.7.0";
 const DOWNLOAD_URL = "https://www.qiaodesktop.com/";
 const NOTES = "改进：设置里两条透明度滑杆改名为「平时透明度 / 呼出透明度」，盒子右键菜单改为「样式&设置」，PRO 功能页新增联系邮箱（可一键复制）。功能与行为无变化。";
 
@@ -34,13 +34,17 @@ const NOTES = "改进：设置里两条透明度滑杆改名为「平时透明�
 //   ⚠️ 不做按地区/渠道的智能选源：读 CF-IPCountry 违反隐私政策 §2.1（不读任何请求头）。
 //   ⚠️ 留空 = 该源未就绪；全部留空时不下发 pkg（客户端维持"只检查不下载"的旧行为）。
 //   占位说明：URL 填好即开通，无需改客户端。
+// 索引约定（PKG_URLS / EXE_URLS 同序）：0 = GitHub、1 = Cloudflare R2、2 = 阿里云 OSS。
+//   🔴 /download 按【具名索引】取源，绝不再依赖「数组末位」—— 1.1.6.0 加阿里云后末位变它，
+//      而该对象未设公共读（403）⇒ 官网下载按钮整整一个版本都是坏链接（1.1.7.0 修）。
+const SRC_GH = 0, SRC_R2 = 1, SRC_CN = 2;
 const PKG_URLS = [
-  "https://github.com/Fing001/qiaodesktop-releases/releases/download/v1.1.6.0/QiaoDesktop.exe.lzma", // GitHub Releases
-  "https://dl.qiaodesktop.com/QiaoDesktop.exe.lzma?v=1.1.6.0", // Cloudflare R2
-  "https://qiaodesktop-dl.oss-cn-shenzhen.aliyuncs.com/QiaoDesktop.exe.lzma?v=1.1.6.0", // 阿里云 OSS（深圳）
+  "https://github.com/Fing001/qiaodesktop-releases/releases/download/v1.1.7.0/QiaoDesktop.exe.lzma", // GitHub Releases
+  "https://dl.qiaodesktop.com/QiaoDesktop.exe.lzma?v=1.1.7.0", // Cloudflare R2
+  "https://qiaodesktop-dl.oss-cn-shenzhen.aliyuncs.com/QiaoDesktop.exe.lzma?v=1.1.7.0", // 阿里云 OSS（深圳）
 ];
-const PKG_SHA256 = "3F3567FBDD6C4110FF0CBD452128A6CC19EFF86CDCB0A3634A5A2F3B18032DAB"; // 包 sha256（大写十六进制）；空 = 跳过校验（仅调试用，正式发版必填）
-const PKG_SIZE = 1169317;    // 包字节数；0 = 跳过 size 校验
+const PKG_SHA256 = "B73BE113611E993583FC9CDB15C60BB088EF414C184EF1A86A389D50F61C687E"; // 包 sha256（大写十六进制）；空 = 跳过校验（仅调试用，正式发版必填）
+const PKG_SIZE = 1132597;    // 包字节数；0 = 跳过 size 校验
 
 // 官网下载入口的物料（2026-10-28 新增）—— 给「人」点的，与上面给客户端用的 PKG_URLS 分开维护。
 //   [0] GitHub Releases —— 发布物料原址（exe 与 .lzma 同目录，附 README/CHANGELOG）
@@ -49,9 +53,12 @@ const PKG_SIZE = 1169317;    // 包字节数；0 = 跳过 size 校验
 //   ⚠️ 不做跨类型回退（exe 未上传时不悄悄塞给用户一个 .lzma）：宁可 302 到一个 404，
 //      也不让用户下到与按钮描述不符的文件。
 const EXE_URLS = [
-  "https://github.com/Fing001/qiaodesktop-releases/releases/download/v1.1.6.0/QiaoDesktop.exe", // GitHub Releases
-  "https://dl.qiaodesktop.com/QiaoDesktop.exe?v=1.1.6.0", // Cloudflare R2
-  "https://qiaodesktop-dl.oss-cn-shenzhen.aliyuncs.com/QiaoDesktop.exe?v=1.1.6.0", // 阿里云 OSS（深圳）
+  "https://github.com/Fing001/qiaodesktop-releases/releases/download/v1.1.7.0/QiaoDesktop.exe", // GitHub Releases
+  "https://dl.qiaodesktop.com/QiaoDesktop.exe?v=1.1.7.0", // Cloudflare R2
+  // 阿里云 OSS（深圳）—— 暂留空：桶内 QiaoDesktop.exe 对象未设公共读，直连返回 403
+  //   （.lzma 已设公共读、正常）。在 OSS 控制台把该对象 ACL 改成「公共读」后，把下面这行换成
+  //   "https://qiaodesktop-dl.oss-cn-shenzhen.aliyuncs.com/QiaoDesktop.exe?v=1.1.7.0" 即可启用。
+  "",
 ];
 
 export default {
@@ -61,7 +68,7 @@ export default {
     const path = url.pathname.replace(/\/+$/, "") || "/";
 
     // 官网下载入口（2026-10-28）：/download = 未压缩 exe（下载即用）；/download/lzma = 压缩包（需解压工具）。
-    //   默认跳官网 R2（国内更稳）；加 ?src=gh 换 GitHub 源。
+    //   默认跳官网 R2（国内更稳）；?src=gh 换 GitHub 源；?src=cn 换阿里云源。
     //   ⚠️ 用 302 而不是 Worker 代理文件：文件本身在 R2/GitHub 上，代理大文件既费流量也失去 CDN 直连优势。
     //   ⚠️ 必须带 no-store：URL 里写死了版本号，一旦 302 被浏览器/CDN 缓存，用户会永远停在旧版本。
     //   ⚠️ 这两个路径要能进本 Worker，靠 wrangler.json 的 run_worker_first 显式列出，漏加会被静态资产直接 404。
@@ -70,12 +77,16 @@ export default {
         return new Response("Method Not Allowed", { status: 405, headers: { allow: "GET, HEAD" } });
       }
       const dlSrc = (url.searchParams.get("src") || "").toLowerCase();
-      const ghFirst = dlSrc === "gh" || dlSrc === "github";
-      const ready = (path === "/download" ? EXE_URLS : PKG_URLS).filter(
-        (u) => typeof u === "string" && u.length > 0
-      );
-      // 默认取末位（R2），?src=gh 取首位（GitHub）；某源留空时自动用另一个
-      const target = ready.length === 0 ? "" : ghFirst ? ready[0] : ready[ready.length - 1];
+      const list = path === "/download" ? EXE_URLS : PKG_URLS;
+      // 取第 i 源；留空（该源未就绪）视为不可用
+      const at = (i) => (typeof list[i] === "string" && list[i].length > 0 ? list[i] : "");
+      // 按具名索引选源（不靠数组位置猜）：默认 R2，?src=gh → GitHub，?src=cn → 阿里云
+      let target = "";
+      if (dlSrc === "gh" || dlSrc === "github") target = at(SRC_GH);
+      else if (dlSrc === "cn" || dlSrc === "aliyun" || dlSrc === "oss") target = at(SRC_CN);
+      else target = at(SRC_R2);
+      // 回落链：目标源未就绪 → R2 → GitHub → 阿里云（都空才 404）
+      if (!target) target = at(SRC_R2) || at(SRC_GH) || at(SRC_CN);
       if (!target) {
         return new Response("Not Found", { status: 404, headers: { "cache-control": "no-store" } });
       }
